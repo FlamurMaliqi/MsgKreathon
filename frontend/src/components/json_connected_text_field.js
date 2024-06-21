@@ -1,0 +1,1 @@
+// Component with that gets json object, json path diplay name and optional update function
