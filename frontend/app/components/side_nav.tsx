@@ -2,8 +2,8 @@ import React from 'react';
 
 const SideNav = () => {
     return (
-        <aside className="side-nav">
-            <ul className="side-nav-list grid h-[92vh] bg-[var(--secondary)] w-[12vw] justify-center items-center pt-[8vh] p-4">
+        <aside className="h-[92vh] w-[12vw] bg-[var(--secondary)] mt-[8vh] ">
+            <ul className="grid justify-center items-center p-4 w-[100%] h-[100%]">
                 <li className="side-nav-item"><a className="side-nav-link" href="/#">Dashboard</a></li>
                 <li className="side-nav-item"><a className="side-nav-link" href="/#">Befunde</a></li>
                 <li className="side-nav-item"><a className="side-nav-link" href="/#">Krankheitsbild</a></li>
