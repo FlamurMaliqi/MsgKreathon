@@ -3,7 +3,6 @@
 const apiBaseURL = 'http://localhost:3000/api/';
 const apiVersion = 'v1';
 
-
 //  ---------------- Patients
 const patientsUrl = () => {
     return `${apiBaseURL}${apiVersion}/patient`;
