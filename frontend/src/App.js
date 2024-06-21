@@ -29,6 +29,7 @@ function App() {
           xAxisPath = "date"
           yAxisPath = "value"
           title = "Temperature"
+          columns = {["Date", "Temperature"]}
         />
       </header>
     </div>

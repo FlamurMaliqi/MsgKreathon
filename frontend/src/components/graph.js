@@ -1,50 +1,35 @@
 import React, {useState, useEffect} from 'react';
-import Chart from "chart.js/auto";
-import { Line } from "react-chartjs-2";
+import { Chart } from "react-google-charts";
 
+  
 // Todo: Needs to be designed!
-const CustomGraph = ({ json, xAxisPath, yAxisPath, title }) => {
+const CustomGraph = ({ json, xAxisPath, yAxisPath, title, columns}) => {
 
 
-    function genXAxis(path) {
+    function genData(xAxisPath, yAxisPath) {
         return json.map((item) => {
-            const value = item[path];
-            return isNaN(value) ? new Date(value) : Number(value);
+            const xValue = item[xAxisPath];
+            const yValue = item[yAxisPath];
+            const x = isNaN(xValue) ? new Date(xValue) : Number(xValue);
+            const y = Number(yValue);
+            return [x, y];
         });
     }
 
-    function genYAxis(path) {
-        return json.map((item) => {
-            const value = item[path];
-            return Number(value);
-        });
-    }
-
-
-    const xAxis = genXAxis(xAxisPath);
-    const yAxis = genYAxis(yAxisPath);
-
-    if (xAxis === undefined || yAxis === undefined || xAxis.length === 0 || yAxis.length === 0) {
-        return (
-            <div>
-                <h1>Graph is loading.. </h1>
-            </div>
-        );
-    }
+    const data = genData(xAxisPath, yAxisPath);
 
     return (
         <div>   
 
 
-            <Line data={{
+        <Chart
+            chartType="LineChart"
+            width="100%"
+            height="400px"
+            data={[columns, ...data]}
+           
+        />
 
-                label: title,
-                backgroundColor: "rgb(255, 99, 132)",
-                borderColor: "rgb(255, 99, 132)",
-                xAxis: xAxis,
-                yAxis: yAxis,
-                
-            }} />
         </div>
     );
     
