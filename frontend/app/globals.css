@@ -5,20 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;   
-  font-size: 16px;
-  --primary: #1c51cb;
-  --secondary: #8988bd;
-  --tritary: #efedff;
-  --surface: #9155c6;
-  --accent: #ffbf56;
-  --onPrimary: #fff;
-  --onSecodary: #fff;
-  --onTritary: #000;
-  --onSurface: #000;
-  --onAccent: #000;
-  --borderRadius: 4px;
-  --spacing: 20px;  
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
