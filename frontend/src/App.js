@@ -30,6 +30,7 @@ function App() {
           yAxisPath = "value"
           title = "Temperature"
           columns = {["Date", "Temperature"]}
+          useAfterItem = {true}
         />
       </header>
     </div>
