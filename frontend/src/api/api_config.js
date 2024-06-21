@@ -3,8 +3,12 @@
 const apiBaseURL = 'http://localhost:3000/api/';
 const apiVersion = 'v1';
 
+const patientsUrl = () => {
+    return `${apiBaseURL}${apiVersion}/patient`;
+}
+
 const getPatientURL = (patientId) => {
-    return `${apiBaseURL}${apiVersion}/patients/${patientId}`;
+    return `${apiBaseURL}${apiVersion}/patient/${patientId}`;
 };
 
 const getTreatmentURL = (patientId, treatmentId) => {
@@ -17,8 +21,12 @@ const getTreatmentsURL = (patientId) => {
     return `${patientURL}/treatments`;
 };
 
+const doctorsUrl = () => {
+    return `${apiBaseURL}${apiVersion}/doctor`;
+}
+
 const getDoctorURL = (doctorId) => {
-    return `${apiBaseURL}${apiVersion}/doctors/${doctorId}`;
+    return `${apiBaseURL}${apiVersion}/doctor/${doctorId}`;
 };
 
 const getDoctorPatientsURL = (doctorId) => {
@@ -38,9 +46,11 @@ const sendRequest = async (url, method, body) => {
 };
 
 export default {
+    patientsUrl,
     getPatientURL,
     getTreatmentURL,
     getTreatmentsURL,
+    doctorsUrl,
     getDoctorURL,
     getDoctorPatientsURL,
     sendRequest,
