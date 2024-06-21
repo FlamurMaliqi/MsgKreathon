@@ -21,13 +21,13 @@ const deleteDoctor = async (doctorId) => {
     return API_CONFIG.sendRequest(doctorURL, 'DELETE');
 }
 
-// ????
+// ????  Name and Number needed !!
 const addPatientToDoctor = async (doctorId, patientId) => {
     const doctorURL = API_CONFIG.getDoctorURL(doctorId);
     return API_CONFIG.sendRequest(`${doctorURL}/patients`, 'CREATE', { patientId: patientId });
 }
 
-
+// By Name or Number?!
 const searchPatients = async (doctorId, query) => {
     const doctorURL = API_CONFIG.getDoctorURL(doctorId);
     return API_CONFIG.sendRequest(`${doctorURL}/patients?search=${query}`, 'GET');
@@ -39,9 +39,17 @@ const removePatientFromDoctor = async (doctorId, patientId) => {
 }
 
 
+
 export default {
     getDoctor,
     createDoctor,
     updateDoctor,
     deleteDoctor,
+
+    addPatientToDoctor,
+    searchPatients,
+    removePatientFromDoctor,
+
+    Doctor,
+
 };
