@@ -1,26 +1,24 @@
-
-
-const apiBaseURL = 'http://localhost:3000/api/';
-const apiVersion = 'v1';
+const apiBaseURL: string = 'http://localhost:3000/api/';
+const apiVersion: string = 'v1';
 
 //  ---------------- Patients
-const patientsUrl = () => {
+const patientsUrl = (): string => {
     return `${apiBaseURL}${apiVersion}/patient`;
 }
 
-const getPatientURL = (patientId) => {
+const getPatientURL = (patientId: string): string => {
     return `${apiBaseURL}${apiVersion}/patient/${patientId}`;
 };
 
 
 //  ---------------- Treatments
 
-const getTreatmentURL = (patientId, treatmentId) => {
+const getTreatmentURL = (patientId: string, treatmentId: string): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/treatments/${treatmentId}`;
 };
 
-const getTreatmentsURL = (patientId) => {
+const getTreatmentsURL = (patientId: string): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/treatments`;
 };
@@ -29,12 +27,12 @@ const getTreatmentsURL = (patientId) => {
 
 
 // ---------------- Vaccinations
-const getVaccinationURL = (patientId, vaccinationId) => {
+const getVaccinationURL = (patientId: string, vaccinationId: string): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/vaccinations/${vaccinationId}`;
 }
 
-const getVaccinationsURL = (patientId) => {
+const getVaccinationsURL = (patientId: string): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/vaccinations`;
 }
@@ -42,12 +40,12 @@ const getVaccinationsURL = (patientId) => {
 
 
 // ---------------- Diagnosis
-const getDiagnosisURL = (patientId, diagnosisId) => {
+const getDiagnosisURL = (patientId: string, diagnosisId: string): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/diagnosis/${diagnosisId}`;
 }
 
-const getDiagnosisesURL = (patientId) => {
+const getDiagnosisesURL = (patientId: string): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/diagnosis`;
 }
@@ -57,15 +55,15 @@ const getDiagnosisesURL = (patientId) => {
 
 //  ---------------- Doctors
 
-const doctorsUrl = () => {
+const doctorsUrl = (): string => {
     return `${apiBaseURL}${apiVersion}/doctor`;
 }
 
-const getDoctorURL = (doctorId) => {
+const getDoctorURL = (doctorId: string): string => {
     return `${apiBaseURL}${apiVersion}/doctor/${doctorId}`;
 };
 
-const getDoctorPatientsURL = (doctorId) => {
+const getDoctorPatientsURL = (doctorId: string): string => {
     const doctorURL = getDoctorURL(doctorId);
     return `${doctorURL}/patients`;
 };
@@ -75,7 +73,7 @@ const getDoctorPatientsURL = (doctorId) => {
 
 
 
-const sendRequest = async (url, method, body) => {
+const sendRequest = async (url: string, method: string, body: any): Promise<any> => {
     const response = await fetch(url, {
         method: method,
         headers: {
