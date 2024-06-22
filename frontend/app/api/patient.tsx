@@ -88,7 +88,7 @@ const getPatient = async (patientId: number): Promise<Patient> => {
 };
 
 const createPatient = async (data: Patient): Promise<Patient> => {
-    const js = await API_CONFIG.sendRequest(API_CONFIG.patientsUrl(), 'POST', data.toJson());
+    const js = await API_CONFIG.sendRequest(API_CONFIG.patientsUrl() + "/register", 'POST', data.toJson());
     return new Patient(js);
 };
 
