@@ -12,12 +12,12 @@ const getVaccinations = async (patientId: string): Promise<Object> => {
 
 const createVaccination = async (patientId: string, data: Object): Promise<Object> => {
     const vaccinationsURL = API_CONFIG.getVaccinationsURL(patientId);
-    return API_CONFIG.sendRequest(vaccinationsURL, 'CREATE', data);
+    return API_CONFIG.sendRequest(vaccinationsURL, 'POST', data);
 }
 
 const updateVaccination = async (patientId: string, vaccinationId: string, data: Object): Promise<Object> => {
     const vaccinationURL = API_CONFIG.getVaccinationURL(patientId, vaccinationId);
-    return API_CONFIG.sendRequest(vaccinationURL, 'UPDATE', data);
+    return API_CONFIG.sendRequest(vaccinationURL, 'PUT', data);
 }
 
 const deleteVaccination = async (patientId: string, vaccinationId: string): Promise<Object> => {

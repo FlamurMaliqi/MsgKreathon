@@ -7,12 +7,12 @@ const getDoctor = async (doctorId: string): Promise<Object> => {
 }
 
 const createDoctor = async (data: Object): Promise<Object> => {
-    return API_CONFIG.sendRequest(API_CONFIG.doctorsUrl(), 'CREATE', data);
+    return API_CONFIG.sendRequest(API_CONFIG.doctorsUrl(), 'POST', data);
 }
 
 const updateDoctor = async (doctorId: string, data: Object): Promise<Object> => {
     const doctorURL = API_CONFIG.getDoctorURL(doctorId);
-    return API_CONFIG.sendRequest(doctorURL, 'UPDATE', data);
+    return API_CONFIG.sendRequest(doctorURL, 'PUT', data);
 }
 
 const deleteDoctor = async (doctorId: string): Promise<Object> => {
@@ -22,7 +22,7 @@ const deleteDoctor = async (doctorId: string): Promise<Object> => {
 
 const addPatientToDoctor = async (doctorId: string, patientId: string): Promise<Object> => {
     const doctorURL = API_CONFIG.getDoctorURL(doctorId);
-    return API_CONFIG.sendRequest(`${doctorURL}/patients`, 'CREATE', { patientId });
+    return API_CONFIG.sendRequest(`${doctorURL}/patients`, 'POST', { patientId });
 }
 
 const searchPatients = async (doctorId: string, query: string): Promise<Object[]> => {

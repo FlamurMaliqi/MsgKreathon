@@ -13,14 +13,14 @@ const getPatientURL = (patientId: string): string => {
 
 //  ---------------- Treatments
 
-const getTreatmentURL = (patientId: string, treatmentId: string): string => {
+const getDrugURL = (patientId: string, drugId: string): string => {
     const patientURL = getPatientURL(patientId);
-    return `${patientURL}/treatments/${treatmentId}`;
+    return `${patientURL}/drug/${drugId}`;
 };
 
-const getTreatmentsURL = (patientId: string): string => {
+const getDrugsURL = (patientId: string): string => {
     const patientURL = getPatientURL(patientId);
-    return `${patientURL}/treatments`;
+    return `${patientURL}/drug`;
 };
 
 
@@ -29,12 +29,12 @@ const getTreatmentsURL = (patientId: string): string => {
 // ---------------- Vaccinations
 const getVaccinationURL = (patientId: string, vaccinationId: string): string => {
     const patientURL = getPatientURL(patientId);
-    return `${patientURL}/vaccinations/${vaccinationId}`;
+    return `${patientURL}/vaccination/${vaccinationId}`;
 }
 
 const getVaccinationsURL = (patientId: string): string => {
     const patientURL = getPatientURL(patientId);
-    return `${patientURL}/vaccinations`;
+    return `${patientURL}/vaccination`;
 }
 
 
@@ -89,8 +89,8 @@ export default {
     apiVersion,
     patientsUrl,
     getPatientURL,
-    getTreatmentURL,
-    getTreatmentsURL,
+    getDrugURL,
+    getDrugsURL,
     getVaccinationURL,
     getVaccinationsURL,
     getDiagnosisURL,

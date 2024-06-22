@@ -7,12 +7,12 @@ const getPatient = async (patientId: string): Promise<Object> => {
 };
 
 const createPatient = async (data: Object): Promise<Object> => {
-    return API_CONFIG.sendRequest(API_CONFIG.patientsUrl(), 'CREATE', data);
+    return API_CONFIG.sendRequest(API_CONFIG.patientsUrl(), 'POST', data);
 };
 
 const updatePatient = async (patientId: string, data: Partial<Object>): Promise<Object> => {
     const patientURL = API_CONFIG.getPatientURL(patientId);
-    return API_CONFIG.sendRequest(patientURL, 'UPDATE', data);
+    return API_CONFIG.sendRequest(patientURL, 'PUT', data);
 };
 
 const deletePatient = async (patientId: string): Promise<Object> => {

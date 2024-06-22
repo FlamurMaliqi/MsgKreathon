@@ -12,12 +12,12 @@ const getDiagnosises = async (patientId: string): Promise<Object> => {
 
 const createDiagnosis = async (patientId: string, data: Object): Promise<Object> => {
     const diagnosisURL = API_CONFIG.getDiagnosisesURL(patientId);
-    return API_CONFIG.sendRequest(diagnosisURL, 'CREATE', data);
+    return API_CONFIG.sendRequest(diagnosisURL, 'POST', data);
 }
 
 const updateDiagnosis = async (patientId: string, diagnosisId: string, data: Object): Promise<Object> => {
     const diagnosisURL = API_CONFIG.getDiagnosisURL(patientId, diagnosisId);
-    return API_CONFIG.sendRequest(diagnosisURL, 'UPDATE', data);
+    return API_CONFIG.sendRequest(diagnosisURL, 'PUT', data);
 }
 
 const deleteDiagnosis = async (patientId: string, diagnosisId: string): Promise<Object> => {
