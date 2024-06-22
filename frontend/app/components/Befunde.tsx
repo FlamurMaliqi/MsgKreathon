@@ -58,8 +58,8 @@ export default function Befunde(){
 }, []); 
 
     return (
-        <div className="impfungen-table h-full w-full overflow-y-scroll">
-            <TreeTable value={nodes} tableStyle={{ minWidth: '50rem' }}>
+        <div className="h-full w-full overflow-y-scroll overflow-x-hidden">
+            <TreeTable value={nodes} tableStyle={{ minWidth: '88vw' }} onRowClick={(e) => console.log(e)}>
                 <Column field="datum" header="Datum"></Column>
                 <Column field="typ" header="Typ"></Column>
                 <Column field="diagnose" header="Diagnose"></Column>

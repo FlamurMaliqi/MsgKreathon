@@ -50,10 +50,10 @@ const Medikante: React.FC = () => {
         <main className="main-grid grid">
         <HeaderNav/>
         <SideNav/>
-          <div className="content h-[92vh] overflow-scroll p-4">
-            <div className="Medikamente grid grid-cols-2 w-[80vw] gap-8">
+          <div className="content h-[92vh] overflow-scroll p-4 w-[88vw]">
+            <div className="Medikamente grid grid-cols-2 gap-8">
                 {labels.map((label, index) =>
-                    <AccordionElement labels={[label]} values={[values[index]]}/>
+                    <AccordionElement key={index} labels={[label]} values={[values[index]]}/>
                 )}
             </div>
         </div>

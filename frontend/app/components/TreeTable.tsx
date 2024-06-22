@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { TreeTable } from 'primereact/treetable';
 import { Column } from 'primereact/column';
 
-export default function BasicDemo({nodes}:{nodes: any}) {
-
+export default function TreeTableWrapper({nodes, onRowClick}:{nodes: any, onRowClick: any}) {
 
     useEffect(() => {
         // Dummy-Daten für Testzwecke
@@ -35,7 +34,7 @@ export default function BasicDemo({nodes}:{nodes: any}) {
 
     return (
         <div className="impfungen-table h-full w-full overflow-y-scroll">
-            <TreeTable value={nodes} tableStyle={{ minWidth: '50rem' }}>
+            <TreeTable value={nodes} tableStyle={{minWidth: "88vw"}} onRowClick={onRowClick}>
                 <Column field="art" header="Art" expander></Column>
                 <Column field="datum" header="Datum"></Column>
                 <Column field="impfstoffname" header="Impfstoffname"></Column>

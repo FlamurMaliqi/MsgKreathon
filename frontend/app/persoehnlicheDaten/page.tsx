@@ -38,7 +38,7 @@ export default function Home() {
             <SideNav />
             <div className="content h-[92vh] w-[88vw] overflow-y-scroll py-4 grid grid-cols-2 content-evenly justify-items-center">
                 <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
-                    <h3>Persönliche Informationen</h3>
+                    <h3 className="headline mb-4">Persönliche Informationen</h3>
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-first-name">
@@ -150,7 +150,7 @@ export default function Home() {
                 </form>
 
                 <form className="w-full max-w-lg bg-[var(--secondary)] p-4 h-[90%] rounded">
-                    <h3>Notfallkontakt</h3>
+                    <h3 className="headline mb-4">Notfallkontakt</h3>
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-first-name">

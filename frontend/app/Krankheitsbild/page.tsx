@@ -57,7 +57,7 @@ export default function Home(this: any) {
     <main className="main-grid grid">
     <HeaderNav></HeaderNav>
     <SideNav/>
-      <div className="content h-[92vh] overflow-scroll p-4">
+      <div className="content h-[92vh] overflow-scroll p-4 w-[88vw]">
         <AccordionElement 
           labels={["Allergien"]}
           values={allergies.map((allergy) => allergy.allergen)}

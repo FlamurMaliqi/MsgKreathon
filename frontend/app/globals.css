@@ -119,7 +119,7 @@ body {
 aside ul li{
   text-decoration: none;
   position: relative;
-  opacity: 0.925;
+  opacity: 0.9;
   width: fit-content;
 }
 
@@ -152,7 +152,6 @@ aside ul li a:hover:after{
   padding: 1rem;
 }
 
-
 .p-column-header-content  {
   text-align: start !important;
   padding: 1rem;
@@ -167,13 +166,16 @@ aside ul li a:hover:after{
   background-color: var(--tritary);
   color: var(--onTritary);
 }
-h3 {
-    font-size: 1.5em; /* Setzt die Schriftgröße */
-    margin-bottom: 0.5em; /* Setzt den unteren Abstand */
-    color: #333; /* Setzt die Schriftfarbe */
-    font-weight: bold; /* Macht die Schrift fett */
-}
 
 .p-accordion-toggle-icon {
   margin-right: 0.5rem;
+}
+
+tr:not([data-pc-section="headerrow"]){
+  opacity: 0.9;
+}
+
+tr:not([data-pc-section="headerrow"]):hover {
+  opacity: 1;
+  background: #ddddd3;
 }

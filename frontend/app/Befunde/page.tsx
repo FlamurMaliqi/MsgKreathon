@@ -11,7 +11,7 @@ default function Home() {
         
         <HeaderNav></HeaderNav>
         <SideNav/>
-        <div className="p-4">
+        <div className="p-4 w-[88vw]">
             <TreeTable/>
         </div>
 
