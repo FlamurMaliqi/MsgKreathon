@@ -51,8 +51,10 @@ const getReportsURL = (patientId: string): string => {
 }
 
 
-
-
+const getEmergencyContactURL = (patientId: string): string => {
+    const patientURL = getPatientURL(patientId);
+    return `${patientURL}/ice`;
+}
 
 
 //  ---------------- Doctors
@@ -69,6 +71,8 @@ const getDoctorPatientsURL = (doctorId: string): string => {
     const doctorURL = getDoctorURL(doctorId);
     return `${doctorURL}/patients`;
 };
+
+
 
 
 
@@ -97,6 +101,7 @@ export default {
     getVaccinationsURL,
     getReportURL,
     getReportsURL,
+    getEmergencyContactURL,
     doctorsUrl,
     getDoctorURL,
     getDoctorPatientsURL,
