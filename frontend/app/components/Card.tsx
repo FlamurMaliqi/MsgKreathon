@@ -23,7 +23,9 @@ export default function CardElement({
             className={className + " card"}>
             <Card className="headline" title={title}>
                 <p className="text m-0 opacity-90">
-                    {text}
+                    {text.split("\n").map((item: any, key: any) => {
+                        return <span key={key}>{item}<br/></span>
+                    })}
                 </p>
             </Card>
         </motion.div>
