@@ -167,3 +167,9 @@ aside ul li a:hover:after{
   background-color: var(--tritary);
   color: var(--onTritary);
 }
+h3 {
+    font-size: 1.5em; /* Setzt die Schriftgröße */
+    margin-bottom: 0.5em; /* Setzt den unteren Abstand */
+    color: #333; /* Setzt die Schriftfarbe */
+    font-weight: bold; /* Macht die Schrift fett */
+}
