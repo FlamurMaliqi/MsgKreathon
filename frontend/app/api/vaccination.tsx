@@ -1,11 +1,11 @@
 import API_CONFIG from './api_config.jsx';
 
 class Vaccination {
-    id: string;
+    id?: string ;
     name: string;
 
     constructor(json: {
-        id: string;
+        id?: string;
         name: string;
     }) {
         this.id = json.id;
@@ -40,7 +40,7 @@ const createVaccination = async (patientId: string, data: Vaccination): Promise<
 }
 
 const updateVaccination = async (patientId: string, data: Vaccination): Promise<Vaccination> => {
-    const vaccinationURL = API_CONFIG.getVaccinationURL(patientId, data.id);
+    const vaccinationURL = API_CONFIG.getVaccinationURL(patientId, data.id!);
     const js = await API_CONFIG.sendRequest(vaccinationURL, 'PUT', data.toJson());
     return new Vaccination(js);
 }

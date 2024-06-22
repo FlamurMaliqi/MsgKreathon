@@ -1,11 +1,11 @@
 import API_CONFIG from './api_config.js'
 
 class Drug {
-    id: string;
+    id?: string;
     name: string;
 
     constructor(json: {
-        id: string;
+        id?: string;
         name: string;
     }) {
         this.id = json.id;
@@ -41,7 +41,7 @@ const createDrug = async (patientId: string, data: Drug): Promise<Drug> => {
 }
 
 const updateDrug = async (patientId: string, data: Drug): Promise<Drug> => {
-    const treatmentURL = API_CONFIG.getDrugURL(patientId, data.id);
+    const treatmentURL = API_CONFIG.getDrugURL(patientId, data.id!);
     const js = await API_CONFIG.sendRequest(treatmentURL, 'PUT', data.toJson());
     return new Drug(js);
 }

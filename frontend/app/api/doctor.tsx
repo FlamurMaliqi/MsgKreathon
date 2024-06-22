@@ -1,11 +1,11 @@
 import API_CONFIG from "./api_config";
 
 class Doctor {
-    id: string;
+    id?: string;
     name: string;
 
     constructor(json: {
-        id: string;
+        id?: string;
         name: string;
     }) {
         this.id = json.id;
@@ -61,7 +61,7 @@ const createDoctor = async (data: Doctor): Promise<Doctor> => {
 }
 
 const updateDoctor = async (data: Doctor): Promise<Doctor> => {
-    const doctorURL = API_CONFIG.getDoctorURL(data.id);
+    const doctorURL = API_CONFIG.getDoctorURL(data.id!);
     const js = await API_CONFIG.sendRequest(doctorURL, 'PUT', data.toJson());
     return new Doctor(js);
 }

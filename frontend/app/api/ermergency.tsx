@@ -1,11 +1,11 @@
 import API_CONFIG from './api_config';
 
 class EmergencyContact {
-    id: string;
+    id?: string;
     name: string;
 
     constructor(json: {
-        id: string;
+        id?: string;
         name: string;
     }) {
         this.id = json.id;

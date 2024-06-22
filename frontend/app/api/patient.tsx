@@ -2,11 +2,11 @@ import API_CONFIG from './api_config.js';
 
 
 class Patient {
-    id: string;
+    id?: string;
     name: string;
 
     constructor(json: {
-        id: string;
+        id?: string;
         name: string;
     }) {
         this.id = json.id;
@@ -34,12 +34,15 @@ const createPatient = async (data: Patient): Promise<Patient> => {
 };
 
 const updatePatient = async (data:Patient) => {
-    const patientURL = API_CONFIG.getPatientURL(data.id);
+    const patientURL = API_CONFIG.getPatientURL(data.id!);
     const js = await API_CONFIG.sendRequest(patientURL, 'PUT', data.toJson());
     return new Patient(js);
 };
 
-const deletePatient = async (patientId: string) => {
+const deletePatient = async (patientId: Patient | string) => {
+    if (typeof patientId !== 'string') {
+        patientId = patientId.id!;
+    }
     const patientURL = API_CONFIG.getPatientURL(patientId);
     await API_CONFIG.sendRequest(patientURL, 'DELETE', "");
 };
