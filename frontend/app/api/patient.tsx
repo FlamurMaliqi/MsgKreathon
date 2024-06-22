@@ -77,7 +77,7 @@ class Patient {
             houseNumber: this.houseNumber,
             postalCode: this.postalCode,
             city: this.city,
-            emergencyContact: this.emergencyContact.toJson()
+            emergencyContact: this.emergencyContact?.toJson()
         };
     }
 }

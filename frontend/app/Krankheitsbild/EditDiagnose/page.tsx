@@ -5,25 +5,19 @@ import Input from "../../components/jsonUtil/jsonConnectedFormField";
 import { useState, useEffect } from "react";
 import { Doctor } from "@/app/api/doctor";
 import JsonConnectedDatePicker from "@/app/components/jsonUtil/jsonConnectedDate";
-import { Allergy, updateAllergies, getAllergies } from "@/app/api/allergy";
+import { Diagnosis, updateDiagnosis, getDiagnosis } from "@/app/api/diagnosis";
 
 export default function Home() {
 
-    const [d, setD] = useState(undefined as Allergy | undefined);
+    const [d, setD] = useState(null as unknown as Diagnosis);
 
     const urlParams = new URLSearchParams(window.location.search)
-    const patientId = parseInt(urlParams.get('patientId') || "-1");
-    const allergyId = parseInt(urlParams.get('allergyId') || "-1");
-
-    if (patientId == -1 || allergyId == -1) {
-        alert("No patientId and/or allergyId provided in URL")
-    }
+    const patientId = parseInt(urlParams.get('patientId') || "1");
+    const diagnosisId = parseInt(urlParams.get('vaccinationId') || "1");
    
     useEffect(() => {
-        getAllergies(patientId).then((allergies:Allergy[]) => {
-            var allergy:(Allergy|undefined) = allergies.find((allergy) => allergy.id == allergyId);
-            setD(allergy);
-            console.log(allergy);
+        getDiagnosis(patientId, diagnosisId).then((diagnosis) => {
+            setD(diagnosis);
         });
 
     }, []);
@@ -33,14 +27,26 @@ export default function Home() {
     }
 
 
-    // var d = new Allergy({
-    //     id: 1,
-    //     allergen: "Pollen",
+    // var d = new Diagnosis({
+    //     id: 1,   
     //     patientId: 2,
-    //     reaction: "Niesen",
+    //     illness: "Pollen",
     //     dateDiagnosed: new Date(),
     //     severity: "mittel",
-    //     notes: "Nichts",
+    //     description: "Nichts",
+    //     issuedBy: new Doctor({
+    //         doctorId: 1,
+    //         name: "Dr. Müller",
+    //         surname: "Müller",
+    //         speciality: "Allgemeinmedizin",
+    //         email: "",
+    //         phone: "",
+    //         street: "",
+    //         houseNumber: "",
+    //         postalCode: "",
+    //         city: "",
+    //     }),
+
     // });
 
     // const patientId = 1;
@@ -58,12 +64,12 @@ export default function Home() {
 
                         <div className="w-full px-3">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
-                                Reaktion
+                                Krankheit
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
-                                jsonPath="reaction"
-                                displayName="Reaktion"
+                                jsonPath="illness"
+                                displayName="Krankheit"
                                 updateFunction={() => {
                                 }}
                             />
@@ -119,17 +125,8 @@ export default function Home() {
                 <button className="bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
                     type="button"
                     onClick={async () => {
-                        // get all allergies and update the one with the id
-                        const allergies = await getAllergies(patientId);
-                        for (let i = 0; i < allergies.length; i++) {
-                            if (allergies[i].id == allergyId) {
-                                allergies[i] = d;
-                                break;
-                            }
-                        }
-                        await updateAllergies(patientId, allergies);
-                        alert("Allergie wurde gespeichert")
-                        window.location.href = "/Krankheitsbild?" + "patientId=" + patientId + "&allergyId=" + allergyId;
+                        await updateDiagnosis(patientId, d);
+                        window.location.href = "/";
                     }}
                     >
                     Speichern

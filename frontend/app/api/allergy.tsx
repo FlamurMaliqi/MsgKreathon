@@ -24,7 +24,9 @@ class Allergy {
         this.allergen = json.allergen;
         this.reaction = json.reaction;
         this.severity = json.severity;
-        this.dateDiagnosed = json.dateDiagnosed;
+        this.dateDiagnosed = new Date(json.dateDiagnosed);
+        // set time to 0
+        this.dateDiagnosed.setHours(0, 0, 0, 0);
         this.notes = json.notes;
     }
 
@@ -35,7 +37,8 @@ class Allergy {
             allergen: this.allergen,
             reaction: this.reaction,
             severity: this.severity,
-            dateDiagnosed: this.dateDiagnosed,
+            dateDiagnosed: `${this.dateDiagnosed.getFullYear()},${this.dateDiagnosed.getMonth() + 1},${this.dateDiagnosed.getDate()}`,
+
             notes: this.notes,
         };
     }
@@ -59,9 +62,9 @@ const createAllergy = async (patientId: number, data: Allergy): Promise<Allergy>
     return new Allergy(js);
 }
 
-const updateAllergy = async (patientId: number, data: Allergy): Promise<Allergy> => {
-    const allergyUrl = API_CONFIG.getAllergyURL(patientId, data.id!);
-    const js = await API_CONFIG.sendRequest(allergyUrl, 'PUT', data.toJson());
+const updateAllergies = async (patientId: number, data: Allergy[]): Promise<Allergy> => {
+    const allergyUrl = API_CONFIG.getAllergiesURL(patientId);
+    const js = await API_CONFIG.sendRequest(allergyUrl, 'PUT', data.map((item) => item.toJson()));
     return new Allergy(js);
 }
 
@@ -75,6 +78,6 @@ export {
     getAllergy,
     getAllergies,
     createAllergy,
-    updateAllergy,
+    updateAllergies,
     deleteAllergy
 };

@@ -23,9 +23,10 @@ const JsonConnectedDatePicker= ({ json, jsonPath, displayName, updateFunction, c
         }
     }
 
+
     return (
         <div >
-            <input type="date" value={value} onChange={handleChange} placeholder={value} className={className}/>
+            <input type="date" value={value} onChange={handleChange} className={className}/>
         </div>
     );
 }
