@@ -6,6 +6,8 @@ import Account from "./api/account";
 import { useEffect, useState } from "react";
 import { Patient, getPatient } from "./api/patient"; 
 import { Doctor, getDoctor } from "./api/doctor";
+import { IoAddSharp } from "react-icons/io5";
+import AddDialog from "./components/AddDialog";
 
 // dashboard
 export default function Home() {
@@ -38,6 +40,17 @@ export default function Home() {
       alert("No patientId provided in URL");
     }
   }
+  const [open, setOpen] = useState(false);
+  const [dialogData, setData] = useState({} as any);
+  const [dialogContent, setDialogContent] = useState('' as string);
+
+  const handleToggleDialog = () => {
+      setOpen(true);
+      
+      const content = dialogData.diagnose; //dialogData.diagnosis.illness + '\n' + dialogData.diagnosis.description + '\n' + dialogData.diagnosis.severity + '\n' + dialogData.diagnosis.dateDiagnosed;
+      setDialogContent(content);
+      console.log(content)
+  };
 
   return (
     <main className="main-grid grid min-h-screen">
@@ -49,6 +62,10 @@ export default function Home() {
         <Card className="dashboard-area-c" title="Medikamente"/>
         <Card className="dashboard-area-d" title="Befunde"/>
       </div>
+      <span className="absolute z-40 right-4 bottom-4"><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
+
+      <AddDialog openToggle={open} setOpen={setOpen} title={"Update"} data={"Langer Kontnet"} />
+    
     </main>
   );
 }

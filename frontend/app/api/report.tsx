@@ -1,8 +1,9 @@
 import API_CONFIG from './api_config';
+import { Diagnosis } from './diagnosis';
 class Report {
     id?: number;
     patientId: number;
-    diagnosisId: string;
+    diagnosis: Diagnosis;
     findings: string;
     recommendations: string;
     date: Date;
@@ -11,7 +12,7 @@ class Report {
     constructor(json: {
         id?: number;
         patientId: number;
-        diagnosisId: string;
+        diagnosis: any;
         findings: string;
         recommendations: string;
         date: Date;
@@ -19,7 +20,7 @@ class Report {
     }) {
         this.id = json.id;
         this.patientId = json.patientId;
-        this.diagnosisId = json.diagnosisId;
+        this.diagnosis = new Diagnosis(json.diagnosis);
         this.findings = json.findings;
         this.recommendations = json.recommendations;
         this.date = json.date;
@@ -30,7 +31,7 @@ class Report {
         return {
             id: this.id,
             patientId: this.patientId,
-            diagnosisId: this.diagnosisId,
+            diagnosis: this.diagnosis.toJson(),
             findings: this.findings,
             recommendations: this.recommendations,
             date: this.date,
