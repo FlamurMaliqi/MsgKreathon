@@ -1,8 +1,8 @@
 import SideNav from "./components/SideNav";
 import HeaderNav from './components/HeaderNav';
 import Card from './components/Card';
-import AccordionElement from "./components/AccordionElement";
 
+// dashboard
 export default function Home() {
   return (
     <main className="main-grid grid min-h-screen">

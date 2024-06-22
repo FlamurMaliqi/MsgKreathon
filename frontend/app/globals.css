@@ -83,9 +83,6 @@ body {
   ;
 }
 
-.dashboard-grid div{
-}
-
 .dashboard-area-a{
   grid-area: a;
 }
@@ -113,3 +110,34 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Nav Style hover effect*/
+
+aside ul li{
+  text-decoration: none;
+  position: relative;
+  opacity: 0.925;
+  width: fit-content;
+}
+
+aside ul li a:hover {
+  opacity: 1;
+  transition: all 100ms ease 0s;
+}
+
+aside ul li a:after {
+  content: "";
+  bottom: -4px;
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  background: var(--onPrimary);
+  opacity: 0.6;
+  transition: width 0.3s ease 0s, opacity 0.3s ease 0s;
+  width: 0;
+}
+
+aside ul li a:hover:after{
+  width: 100%;
+  opacity: 0.9; 
+}
