@@ -85,7 +85,7 @@ const sendRequest = async (url: string, method: string, body: any): Promise<any>
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body),
+        body: body == "" ? undefined : JSON.stringify(body),
     });
     return response.json();
 };
