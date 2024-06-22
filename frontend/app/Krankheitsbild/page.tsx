@@ -4,6 +4,7 @@ import HeaderNav from "../components/HeaderNav"
 import SideNav from "../components/SideNav";
 import AccordionElement from "../components/AccordionElement";  
 import { useEffect, useState } from "react";
+import Dialog from "../components/Dialog";
 
 import { Allergy, getAllergies } from "../api/allergy";
 import { Diagnosis, getDiagnoses } from "../api/diagnosis";
@@ -52,6 +53,7 @@ export default function Home(this: any) {
       }),
   ]
 
+  const [open, setOpen] = useState(false);
 
   return (
     <main className="main-grid grid">
@@ -65,6 +67,9 @@ export default function Home(this: any) {
         <Krankheitsbild 
           diagnoses={diagnoses}
         />
+        <div onClick={() => setOpen(!open)}>
+          <Dialog openToggle={open}/>
+        </div>
       </div>
     </main>
   );
