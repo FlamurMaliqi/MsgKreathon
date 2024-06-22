@@ -1,12 +1,16 @@
 "use client";
 
-import SideNav from "../components/SideNav";
-import CustomGraph from "../components/graph";
-import CustomTable from "../components/table";
-
+import JsonConnectedTextField from "../components/jsonUtil/jsonConnectedFormField";
+import {Doctor} from "../api/doctor";
 
 export
  default function Test() {
+
+    var d = new Doctor({
+        id: "1",
+        name: "TestDoktor",
+    });
+
   return (
     <main className="flex min-h-screen">
 
@@ -26,16 +30,16 @@ export
         /> */}
 
 
-        <CustomTable
-            json={[
-                { date: "2021-01-01", temp: 36.5 },
-                { date: "2021-01-02", temp: 37.2 },
-                { date: "2021-01-03", temp: 36.8 },
-                { date: "2021-01-04", temp: 37.1 },
-                { date: "2021-01-05", temp: 36.9 }
-            ]}
-            columns={ ["date", "temp"] }
-            />
+
+        <JsonConnectedTextField
+            json={d}
+            jsonPath="name"
+            displayName="Test"
+            updateFunction={() => {
+                console.log(d.name)
+            }}
+        />
+
 
 
 

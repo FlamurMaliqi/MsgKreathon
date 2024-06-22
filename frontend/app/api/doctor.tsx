@@ -88,7 +88,7 @@ const removePatientFromDoctor = async (doctorId: string, patientId: string) => {
     await API_CONFIG.sendRequest(`${doctorURL}/patients/${patientId}`, 'DELETE', "");
 }
 
-export default {
+export {
     getDoctor,
     createDoctor,
     updateDoctor,

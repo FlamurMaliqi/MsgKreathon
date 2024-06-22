@@ -51,7 +51,7 @@ const deleteDrug = async (patientId: string, drugId: string) => {
     await API_CONFIG.sendRequest(treatmentURL, 'DELETE', "");
 }
 
-export default {
+export {
     getDrug,
     getDrugs,
     createDrug,
