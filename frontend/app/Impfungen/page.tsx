@@ -9,7 +9,7 @@ export
         
         <HeaderNav></HeaderNav>
         <SideNav/>
-        <div className="m-4">
+        <div className="p-4">
             <TreeTable></TreeTable>
         </div>
 

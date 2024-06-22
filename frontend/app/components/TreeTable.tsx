@@ -36,7 +36,7 @@ export default function BasicDemo() {
     }, []);
 
     return (
-        <div className="card h-[100vh]">
+        <div className="impfungen-table h-full w-full overflow-y-scroll">
             <TreeTable value={nodes} tableStyle={{ minWidth: '50rem' }}>
                 <Column field="art" header="Art" expander></Column>
                 <Column field="datum" header="Datum"></Column>

@@ -15,11 +15,15 @@
   --sideNav: #464555;
   --onPrimary: #fff;
   --onSecondary: #fff;
-  --onTritary: #fff;
+  --onTritary: #464555;
   --onSurface: #000;
   --onAccent: #000;
   --borderRadius: 4px;
   --spacing: 20px;  
+}
+
+html, body {
+  overflow-y: hidden;
 }
 
 body {
@@ -140,4 +144,26 @@ aside ul li a:after {
 aside ul li a:hover:after{
   width: 100%;
   opacity: 0.9; 
+}
+
+/* Table Style */
+.p-treetable-tbody td{
+  color: var(--onTritary);
+  padding: 1rem;
+}
+
+
+.p-column-header-content  {
+  text-align: start !important;
+  padding: 1rem;
+}
+
+.p-treetable-thead{
+  background-color: var(--primary);
+  color: var(--onPrimary);
+}
+
+.p-treetable-tbody{
+  background-color: var(--tritary);
+  color: var(--onTritary);
 }

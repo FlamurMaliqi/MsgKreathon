@@ -9,10 +9,10 @@ export default function Home() {
       <HeaderNav/>
       <SideNav/>
       <div className="content dashboard-grid h-[92vh] overflow-scroll p-4 grid gap-4">
-        <Card className="dashboard-area-a"/>
-        <Card className="dashboard-area-b"/>
-        <Card className="dashboard-area-c"/>
-        <Card className="dashboard-area-d"/>
+        <Card className="dashboard-area-a" title="Persöhnliche Daten"/>
+        <Card className="dashboard-area-b" title="Termine"/>
+        <Card className="dashboard-area-c" title="Medikamente"/>
+        <Card className="dashboard-area-d" title="Befunde"/>
       </div>
     </main>
   );
