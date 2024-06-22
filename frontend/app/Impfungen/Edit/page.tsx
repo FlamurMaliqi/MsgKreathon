@@ -51,9 +51,7 @@ export default function Home() {
 
 
     return (
-        <main className="main-grid grid min-h-screen">
-            <HeaderNav></HeaderNav>
-            <SideNav />
+
             <div className="content h-[92vh] w-[88vw] overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
                 <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
                     <h3>Impfungsinformationen </h3>
@@ -128,9 +126,6 @@ export default function Home() {
                     >
                     Speichern
                 </button>
-
             </div>
-         
-        </main>
     );
 }
