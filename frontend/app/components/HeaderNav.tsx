@@ -53,7 +53,7 @@ export default function BasicHeDemo() {
     ];
 
     return (
-        <div className="card">
+        <div className="headerNav card">
             <Menubar model={items} />
         </div>
     )
