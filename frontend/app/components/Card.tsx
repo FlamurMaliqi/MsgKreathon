@@ -1,9 +1,9 @@
 import React from 'react'; 
 import { Card } from 'primereact/card';
 
-export default function BasicDemo() {
+export default function CardElement({className = ""}) {
     return (
-        <div className="card">
+        <div className={className + " card"}>
             <Card className="headline" title="Simple Card">
                 <p className="text m-0">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae 

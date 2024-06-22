@@ -8,11 +8,11 @@ export default function Home() {
     <main className="main-grid grid min-h-screen">
       <HeaderNav/>
       <SideNav/>
-      <div className="content h-[92vh] overflow-scroll p-4">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+      <div className="content dashboard-grid h-[92vh] overflow-scroll p-4 grid gap-4">
+        <Card className="dashboard-area-a"/>
+        <Card className="dashboard-area-b"/>
+        <Card className="dashboard-area-c"/>
+        <Card className="dashboard-area-d"/>
       </div>
     </main>
   );

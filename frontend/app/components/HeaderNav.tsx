@@ -1,61 +1,30 @@
 
 import React from 'react'; 
-import { Menubar } from 'primereact/menubar';
-import "primereact/resources/themes/lara-light-cyan/theme.css";
+import 'primeicons/primeicons.css';
+import Icon from "../../public/logo_MedSync.png"
+import Image from 'next/image';
 
 
-export default function BasicHeDemo() {
+export default function HeaderNav({userName = "Max Mustermann"}) {
     const items = [
         {
-            label: 'Home',
-            icon: 'pi pi-home'
+            label: 'Kalender',
+            icon: 'pi pi-calendar'
         },
         {
-            label: 'Features',
-            icon: 'pi pi-star'
+            label: 'profile',
+            icon: 'pi pi-user'
         },
-        {
-            label: 'Projects',
-            icon: 'pi pi-search',
-            items: [
-                {
-                    label: 'Components',
-                    icon: 'pi pi-bolt'
-                },
-                {
-                    label: 'Blocks',
-                    icon: 'pi pi-server'
-                },
-                {
-                    label: 'UI Kit',
-                    icon: 'pi pi-pencil'
-                },
-                {
-                    label: 'Templates',
-                    icon: 'pi pi-palette',
-                    items: [
-                        {
-                            label: 'Apollo',
-                            icon: 'pi pi-palette'
-                        },
-                        {
-                            label: 'Ultima',
-                            icon: 'pi pi-palette'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            label: 'Contact',
-            icon: 'pi pi-envelope'
-        }
     ];
 
     return (
-        <div className="headerNav card">
-            <Menubar model={items} />
-        </div>
+        <header className="headerNav bg-[var(--primary)] text-[var(--onPrimary)] h-[8vh]">
+            <ul className="flex justify-between items-center p-4">
+                <li className="flex flex-cols"><a href=""><Image src={Icon} alt="Logo" className="w-[6vw]"/></a> <a className="ml-[1.5vw]">Kalender<span className="pi pi-calendar ml-[1.5vw]"/></a></li>
+
+                <li>userName<a className="pi pi-user ml-2"></a></li>
+            </ul>
+        </header>
     )
 }
         

@@ -9,12 +9,13 @@
   font-size: 16px;
   --primary: #1c51cb;
   --secondary: #8988bd;
-  --tritary: #efedff;
+  --tritary: #f1f1e6;
   --surface: #9155c6;
   --accent: #ffbf56;
+  --sideNav: #464555;
   --onPrimary: #fff;
-  --onSecodary: #fff;
-  --onTritary: #000;
+  --onSecondary: #fff;
+  --onTritary: #fff;
   --onSurface: #000;
   --onAccent: #000;
   --borderRadius: 4px;
@@ -38,6 +39,7 @@ body {
 }
 
 .main-grid{
+  display: grid;
   grid-template-areas: 
   "a a"
   "b c";
@@ -62,7 +64,6 @@ body {
   font-weight: 600;
   line-height: 2;
   letter-spacing: 1px;
-  font-family: 'Nunito' 'sans-serif';
 }
 
 .text {
@@ -70,5 +71,45 @@ body {
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.25px;
-  font-family: 'Source Sans Pro' 'sans-serif';
 }
+
+
+/* Dashboard */
+.dashboard-grid{
+  grid-template-areas: 
+  "a b"
+  "a c"
+  "d d"
+  ;
+}
+
+.dashboard-grid div{
+}
+
+.dashboard-area-a{
+  grid-area: a;
+}
+
+.dashboard-area-a .p-card{
+  height: 100%;
+}
+
+.dashboard-area-b{
+  grid-area: b;
+}
+
+.dashboard-area-c{
+  grid-area: c;
+}
+
+.dashboard-area-d{
+  grid-area: d;
+}
+
+.card{
+  background-color: var(--tritary);
+  border-radius: var(--borderRadius);
+  padding: var(--spacing);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
