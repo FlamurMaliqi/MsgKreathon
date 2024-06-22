@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TreeTable } from 'primereact/treetable';
 import { Column } from 'primereact/column';
 
-export default function Befunde(){
+export default function Befunde({onRowClick}: {onRowClick: any}){
     const [nodes, setNodes] = useState([]);
 
     useEffect(() => {
@@ -59,7 +59,7 @@ export default function Befunde(){
 
     return (
         <div className="h-full w-full overflow-y-scroll overflow-x-hidden">
-            <TreeTable value={nodes} tableStyle={{ minWidth: '88vw' }} onRowClick={(e) => console.log(e)}>
+            <TreeTable value={nodes} tableStyle={{ minWidth: '88vw' }} onRowClick={(e) => onRowClick(e)}>
                 <Column field="datum" header="Datum"></Column>
                 <Column field="typ" header="Typ"></Column>
                 <Column field="diagnose" header="Diagnose"></Column>
