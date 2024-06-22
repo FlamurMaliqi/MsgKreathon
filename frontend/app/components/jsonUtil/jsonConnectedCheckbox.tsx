@@ -13,6 +13,7 @@ const JsonConnectedCheckbox = ({ json, jsonPath, displayName, updateFunction }: 
     }, [json, jsonPath]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        json[jsonPath] = event.target.checked;
         setValue(event.target.checked);
         if (updateFunction) {
             updateFunction();
@@ -22,9 +23,9 @@ const JsonConnectedCheckbox = ({ json, jsonPath, displayName, updateFunction }: 
     return (
         <div>
             <label>
-                <input type="checkbox" checked={value} onChange={handleChange} />
-                {displayName}
+                {displayName}         
             </label>
+            <input type="checkbox" checked={value} onChange={handleChange} />
         </div>
     );
 }

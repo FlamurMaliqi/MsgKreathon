@@ -15,6 +15,7 @@ const JsonConnectedTextArea = ({ json, jsonPath, displayName, updateFunction }:{
     }, [json, jsonPath]);
 
     const handleChange = (event:any) => {
+        json[jsonPath] = event.target.value;
         setValue(event.target.value);
         if (updateFunction) {
             updateFunction();

@@ -1,17 +1,16 @@
-import { DataTable } from 'primereact/datatable';
+import { TreeTable } from 'primereact/treetable';
 import { Column } from 'primereact/column';
 
 
-export default ({json, columns}: {json: any[], columns: string[]}) => {
+export default ({json, columns, expander}: {json: any[], columns: string[], expander?:string }) => {
 
     return (
-        <DataTable value={json} tableStyle={{ minWidth: '50rem' }}>
+        <TreeTable value={json} tableStyle={{ minWidth: '50rem' }}>
             {columns.map((column, index) => (
-                <Column key={index} field={column} header={column}>
+                <Column key={index} field={column} expander={expander ? json[index][expander] : undefined} />
                     
-                </Column>
             ))}
-        </DataTable>
+        </TreeTable>
     )
 
 }
