@@ -33,7 +33,7 @@ export default function TreeTableWrapper({nodes, onRowClick}:{nodes: any, onRowC
     }, []);
 
     return (
-        <div className="impfungen-table h-full w-full overflow-y-scroll">
+        <div className="impfungen-table h-full w-full overflow-y-scroll overflow-x-hidden">
             <TreeTable value={nodes} tableStyle={{minWidth: "88vw"}} onRowClick={onRowClick}>
                 <Column field="art" header="Art" expander></Column>
                 <Column field="datum" header="Datum"></Column>

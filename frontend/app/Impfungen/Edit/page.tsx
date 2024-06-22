@@ -52,16 +52,16 @@ export default function Home() {
 
     return (
 
-            <div className="content h-[92vh] w-[88vw] overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
-                <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
+            <div className="content overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
+                <form className="max-w-lg p-4 bg-[--secondary] rounded">
                     <h3>Impfungsinformationen </h3>
                     
                     <div className="flex flex-wrap -mx-3 mb-6">
-                        <div className="w-full px-3">
+                        <div className="px-3">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                                 Name
                             </label>
-                            <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                            <Input className="appearance-none block bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
                                 jsonPath="vaccineName"
                                 displayName="Impfstoff"
@@ -69,11 +69,11 @@ export default function Home() {
                                 }}></Input>
                         </div>
 
-                        <div className="w-full px-3">
+                        <div className="px-3">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                                 Dosis
                             </label>
-                            <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                            <Input className="appearance-none block bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
                                 jsonPath="dose"
                                 displayName="Dosis"
@@ -81,12 +81,12 @@ export default function Home() {
                                 }}></Input>
                         </div>
 
-                        <div className="w-full px-3">
+                        <div className="px-3">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                                 Impfdatum
                             </label>
                             <JsonConnectedDatePicker
-                                className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                                className="appearance-none block bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
                                 jsonPath="vaccinationDate"
                                 displayName="Impfdatum"
@@ -96,12 +96,12 @@ export default function Home() {
 
                         </div>
 
-                        <div className="w-full px-3">
+                        <div className="px-3">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                                 Benachrichtigungsdatum
                             </label>
                             <JsonConnectedDatePicker
-                                className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                                className="appearance-none block bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
                                 jsonPath="notificationDate"
                                 displayName="Benachrichtigungsdatum"
@@ -117,7 +117,8 @@ export default function Home() {
 
                 </form>
 
-                <button className="bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+                <button 
+                    className="justify-self-start relative left-0 bottom-[-16px] hover:bg-[var(--primary)] hover:text-[var(--onPrimary)] mt-3 inline-flex w-full justify-center rounded-md bg-white p-1 text-sm font-semibold text-gray-900 shadow-sm border border-[var(--primary)] sm:mt-0 sm:w-auto"
                     type="button"
                     onClick={async () => {
                         await updateVaccination(patientId, d);

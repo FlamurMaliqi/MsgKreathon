@@ -46,7 +46,7 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                     >
                         <div className="bg-white flex">
                             {/* Side Navigation */}
-                            <div className="bg-[var(--tritary)] w-1/4 p-4">
+                            <div className="bg-[var(--tritary)] w-fit p-4">
                                 <nav className="flex flex-col space-y-2">
                                     <a href="#" onClick={() => setMode("Impfungen")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Impfungen</a>
                                     <a href="#" onClick={() => setMode("Allergie")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Allergie</a>
@@ -55,12 +55,12 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                             </div>
                             
                             {/* Main Content */}
-                            <div className="w-3/4 p-4">
+                            <div className="w-fit h-fit p-4">
                                 {renderContent()}
                                 <div className="absolute bottom-4 right-4">
                                     <button
                                         type="button"
-                                        className="hover:bg-[var(--primary)] hover:text-[var(--onPrimary)] mt-3 inline-flex w-full justify-center rounded-md bg-white p-1 text-sm font-semibold text-gray-900 shadow-sm border-[var(--primary)] sm:mt-0 sm:w-auto"
+                                        className="hover:bg-[var(--primary)] hover:text-[var(--onPrimary)] mt-3 inline-flex w-full justify-center rounded-md bg-white p-1 text-sm font-semibold text-gray-900 border border-[var(--primary)]"
                                         onClick={() => setOpen(false)}
                                         data-autofocus
                                     >
