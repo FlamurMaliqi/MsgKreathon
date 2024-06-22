@@ -1,23 +1,78 @@
 "use client";
-import HeaderNav from "../components/HeaderNav";
-import SideNav from "../components/SideNav";
-import Input from "../components/jsonUtil/jsonConnectedFormField";
-import { Doctor } from "../api/doctor";
-import { EmergencyContact } from "../api/ermergency";
+import HeaderNav from "../../components/HeaderNav";
+import SideNav from "../../components/SideNav";
+import Input from "../../components/jsonUtil/jsonConnectedFormField";
+import { EmergencyContact, updateEmergencyContact, getEmergencyContact} from "../../api/ermergency";
+import { Patient, updatePatient, getPatient } from "@/app/api/patient";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-    var d = new Doctor({
-        doctorId: 1,
+    // const [d, setD] = useState(null as unknown as Patient);
+    // const [e, setE] = useState(null as unknown as EmergencyContact);
+
+    // useEffect(() => {
+    //     const urlParams = new URLSearchParams(window.location.search)
+    //     const patientId = parseInt(urlParams.get('patientId') || "1");
+
+    //     getPatient(patientId).then((patient) => {
+    //         setD(patient);
+    //     });
+    //     getEmergencyContact(patientId).then((emergencyContact) => {
+    //         setE(emergencyContact);
+    //     });
+
+    // }, []);
+    
+    // const urlParams = new URLSearchParams(window.location.search)
+    // const patientId = parseInt(urlParams.get('patientId') || "1");
+
+
+    // if (!d || !e) {
+    //     return <div>Loading...</div>;
+    // }
+
+
+    var d = new Patient({
+        patientId: 1,
         name: "TestDoktor",
         surname: "TestNachname",
-        speciality: "TestFach",
+        kvr: "123456789",
         email: "",
         phone: "",
         street: "",
         houseNumber: "",
         postalCode: "",
-        city: ""
+        city: "",
+        birthday: "",
+        weightKg: 0,
+        heightCm: 0,
+        familyDoctor: {
+            name: "TestDoktor",
+            surname: "TestNachname",
+            email: "",
+            phone: "",
+            street: "",
+            houseNumber: "",
+            postalCode: "",
+            city: "",
+            speciality: ""
+        },
+        emergencyContact: {
+            iceId: 1,
+            name: "",
+            patientId: "",
+            surname: "",
+            relationship: "",
+            email: "",
+            phone: "",
+            street: "",
+            houseNumber: "",
+            postalCode: "",
+            city: ""
+        },
+        healthInsuranceProvider: ""
     });
+    
     var e = new EmergencyContact({
         iceId: 1,
         name: "",
@@ -30,7 +85,7 @@ export default function Home() {
         houseNumber: "",
         postalCode: "",
         city: ""
-    });
+    }); 
 
     return (
         <main className="main-grid grid min-h-screen">
@@ -207,7 +262,14 @@ export default function Home() {
                     </div>
                 </form>
             </div>
-            <button className="absolute bottom-5 right-5 bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" type="submit">
+            <button className="absolute bottom-5 right-5 bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+                type="button"
+                onClick={async () => {
+                    await updatePatient(d);
+                    await updateEmergencyContact(d.id!, e);
+                    window.location.href = "/";
+                }}
+            >
                 Speichern
             </button>
         </main>

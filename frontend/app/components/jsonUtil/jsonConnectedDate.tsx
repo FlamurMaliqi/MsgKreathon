@@ -1,16 +1,13 @@
-"use client"
 // Component with that gets json object, json path diplay name and optional update function
 import React, { useState, useEffect } from 'react';
 
-
 // Todo:  Still needs to be styled
-const JsonConnectedTextField = ({ json, jsonPath, displayName, updateFunction, className }:{
+const JsonConnectedDatePicker= ({ json, jsonPath, displayName, updateFunction, className }:{
     json: any,
     jsonPath: string,
     displayName: string,
     updateFunction?: () => any,
     className?: string
-
 }) => {
     const [value, setValue] = useState(json[jsonPath]);
 
@@ -27,12 +24,10 @@ const JsonConnectedTextField = ({ json, jsonPath, displayName, updateFunction, c
     }
 
     return (
-        <div>
-            <input type="text"  id ={displayName} onChange={handleChange} placeholder={value} className={className} value={value}/>
+        <div >
+            <input type="date" value={value} onChange={handleChange} placeholder={value} className={className}/>
         </div>
     );
 }
 
-
-
-export default JsonConnectedTextField;
+export default JsonConnectedDatePicker;

@@ -28,7 +28,7 @@ class Patient {
         name: string;
         surname: string;
         kvr: string;
-        familyDoctor: Doctor;
+        familyDoctor: any;
         healthInsuranceProvider: string;
         birthday: string;
         weightKg: number;
