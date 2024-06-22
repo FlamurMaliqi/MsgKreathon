@@ -1,34 +1,60 @@
 import API_CONFIG from './api_config';
 
-const getDiagnosis = async (patientId: string, diagnosisId: string): Promise<Object> => {
-    const diagnosisURL = API_CONFIG.getReportURL(patientId, diagnosisId);
-    return API_CONFIG.sendRequest(diagnosisURL, 'GET', "");
+class Report {
+    id: string;
+    name: string;
+
+    constructor(json: {
+        id: string;
+        name: string;
+    }) {
+        this.id = json.id;
+        this.name = json.name;
+        
+    }
+
+    toJson(): Object {
+        return {
+            id: this.id,
+            name: this.name,
+        };
+    }
 }
 
-const getDiagnosises = async (patientId: string): Promise<Object> => {
+const getReport = async (patientId: string, diagnosisId: string): Promise<Report> => {
+    const diagnosisURL = API_CONFIG.getReportURL(patientId, diagnosisId);
+    const js = await API_CONFIG.sendRequest(diagnosisURL, 'GET', "");
+    return new Report(js);
+}
+
+const getReports= async (patientId: string): Promise<Report> => {
     const diagnosisURL = API_CONFIG.getReportsURL(patientId);
-    return API_CONFIG.sendRequest(diagnosisURL, 'GET', "");
+    const js = await API_CONFIG.sendRequest(diagnosisURL, 'GET', "");
+    return js.map((item: any) => new Report(item));
 }
 
-const createDiagnosis = async (patientId: string, data: Object): Promise<Object> => {
+const createReport = async (patientId: string, data: Report): Promise<Report> => {
     const diagnosisURL = API_CONFIG.getReportsURL(patientId);
-    return API_CONFIG.sendRequest(diagnosisURL, 'POST', data);
+    const js = await API_CONFIG.sendRequest(diagnosisURL, 'POST', data);
+    return new Report(js);
 }
 
-const updateDiagnosis = async (patientId: string, diagnosisId: string, data: Object): Promise<Object> => {
+const updateReport = async (patientId: string, data: Report): Promise<Report> => {
+    const diagnosisURL = API_CONFIG.getReportURL(patientId, data.id);
+    const js = await API_CONFIG.sendRequest(diagnosisURL, 'PUT', data);
+    return new Report(js);
+}
+
+const deleteReport = async (patientId: string, diagnosisId: string) => {
     const diagnosisURL = API_CONFIG.getReportURL(patientId, diagnosisId);
-    return API_CONFIG.sendRequest(diagnosisURL, 'PUT', data);
+    await API_CONFIG.sendRequest(diagnosisURL, 'DELETE', "");
 }
 
-const deleteDiagnosis = async (patientId: string, diagnosisId: string): Promise<Object> => {
-    const diagnosisURL = API_CONFIG.getReportURL(patientId, diagnosisId);
-    return API_CONFIG.sendRequest(diagnosisURL, 'DELETE', "");
-}
-
-export default {
-    getDiagnosis,
-    getDiagnosises,
-    createDiagnosis,
-    updateDiagnosis,
-    deleteDiagnosis,
+export {
+    getReport,
+    getReports,
+    createReport,
+    updateReport,
+    deleteReport,
+    Report
 };

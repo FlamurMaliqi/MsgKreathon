@@ -1,28 +1,53 @@
 import API_CONFIG from './api_config.js';
 
 
-const getPatient = async (patientId: string): Promise<Object> => {
+class Patient {
+    id: string;
+    name: string;
+
+    constructor(json: {
+        id: string;
+        name: string;
+    }) {
+        this.id = json.id;
+        this.name = json.name;
+        
+    }
+
+    toJson(): Object {
+        return {
+            id: this.id,
+            name: this.name,
+        };
+    }
+}
+
+const getPatient = async (patientId: string): Promise<Patient> => {
     const patientURL = API_CONFIG.getPatientURL(patientId);
-    return API_CONFIG.sendRequest(patientURL, 'GET', "");
+    const js = await API_CONFIG.sendRequest(patientURL, 'GET', "");
+    return new Patient(js);
 };
 
-const createPatient = async (data: Object): Promise<Object> => {
-    return API_CONFIG.sendRequest(API_CONFIG.patientsUrl(), 'POST', data);
+const createPatient = async (data: Patient): Promise<Patient> => {
+    const js = await API_CONFIG.sendRequest(API_CONFIG.patientsUrl(), 'POST', data);
+    return new Patient(js);
 };
 
-const updatePatient = async (patientId: string, data: Partial<Object>): Promise<Object> => {
+const updatePatient = async (data:Patient) => {
+    const patientURL = API_CONFIG.getPatientURL(data.id);
+    const js = await API_CONFIG.sendRequest(patientURL, 'PUT', data);
+    return new Patient(js);
+};
+
+const deletePatient = async (patientId: string) => {
     const patientURL = API_CONFIG.getPatientURL(patientId);
-    return API_CONFIG.sendRequest(patientURL, 'PUT', data);
+    await API_CONFIG.sendRequest(patientURL, 'DELETE', "");
 };
 
-const deletePatient = async (patientId: string): Promise<Object> => {
-    const patientURL = API_CONFIG.getPatientURL(patientId);
-    return API_CONFIG.sendRequest(patientURL, 'DELETE', "");
-};
-
-export default {
+export {
     getPatient,
     createPatient,
     updatePatient,
     deletePatient,
+    Patient
 };
