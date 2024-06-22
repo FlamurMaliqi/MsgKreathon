@@ -1,4 +1,5 @@
 import React from 'react';
+import { BsGraphUp } from 'react-icons/bs';
 import { FaFileContract, FaPills, FaStethoscope } from 'react-icons/fa';
 import { LuLayoutDashboard } from "react-icons/lu";
 import { TbVaccine } from 'react-icons/tb';
@@ -12,6 +13,7 @@ const SideNav = () => {
                 <li className="side-nav-item text-[var(--onSecondary)]"><a className="side-nav-link flex flex-row items-center" href="./Krankheitsbild"><FaStethoscope /><span className="ml-2">Krankheitsbild</span></a></li>
                 <li className="side-nav-item text-[var(--onSecondary)]"><a className="side-nav-link flex flex-row items-center" href="./Medikamente"><FaPills /><span className="ml-2">Medikamente</span></a></li>
                 <li className="side-nav-item text-[var(--onSecondary)]"><a className="side-nav-link flex flex-row items-center" href="./Impfungen"><TbVaccine /><span className="ml-2">Impfungen</span></a></li>
+                <li className="side-nav-item text-[var(--onSecondary)]"><a className="side-nav-link flex flex-row items-center" href="./Graph"><BsGraphUp /><span className="ml-2">Graph</span></a></li>
             </ul>
         </aside>
     );

@@ -51,21 +51,18 @@ export
         <SideNav/>
         <div className="p-4 w-[88vw]">
             <TreeTable
-              nodes = {
-                vaccinations.map((vaccination) => {
-                  return {
-                    key: vaccination.id,
-                    data: {
-                      art: 'Impfung',
-                      datum: vaccination.vaccinationDate.toLocaleDateString("de-DE"),
-                      impfstoffname: vaccination.vaccineName,
-                      arzt: vaccination.administeringDoctor.name,
-                      naechsterTermin: vaccination.notificationDate.toLocaleDateString("de-DE")
-                    },
-                  }
-                })
-              }
-            />
+          nodes={vaccinations.map((vaccination) => {
+            return {
+              key: vaccination.id,
+              data: {
+                art: 'Impfung',
+                datum: vaccination.vaccinationDate.toLocaleDateString("de-DE"),
+                impfstoffname: vaccination.vaccineName,
+                arzt: vaccination.administeringDoctor.name,
+                naechsterTermin: vaccination.notificationDate.toLocaleDateString("de-DE")
+              },
+            };
+          })} onRowClick={undefined}            />
         </div>
 
     </main>
