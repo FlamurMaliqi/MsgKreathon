@@ -47,7 +47,7 @@ const getVaccination = async (patientId: number, vaccinationId: number): Promise
     return new Vaccination(js);
 }
 
-const getVaccinations = async (patientId: number): Promise<Vaccination> => {
+const getVaccinations = async (patientId: number): Promise<Vaccination[]> => {
     const vaccinationsURL = API_CONFIG.getVaccinationsURL(patientId);
     const js = await API_CONFIG.sendRequest(vaccinationsURL + "/all", 'GET', "");
     return js.map((item: any) => new Vaccination(item));

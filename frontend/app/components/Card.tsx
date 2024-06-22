@@ -6,7 +6,11 @@ import {motion} from 'framer-motion';
 export default function CardElement({
     title = "Title", 
     text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!", 
-    className = ""}
+    className = ""} : {
+    title?: string,
+    text?: any,
+    className?: string
+    }
 ) {
     return (
         <motion.div 

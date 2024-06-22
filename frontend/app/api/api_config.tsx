@@ -57,6 +57,32 @@ const getEmergencyContactURL = (patientId: number): string => {
 }
 
 
+// ------------- Allergies
+
+const getAllergyURL = (patientId: number, allergyId: number): string => {
+    const patientURL = getPatientURL(patientId);
+    return `${patientURL}/allergy/${allergyId}`;
+}
+
+const getAllergiesURL = (patientId: number): string => {
+    const patientURL = getPatientURL(patientId);
+    return `${patientURL}/allergy`;
+}
+
+
+// ----------------- Diagnosis
+
+const getDiagnosisURL = (patientId: number, diagnosisId: number): string => {
+    const patientURL = getPatientURL(patientId);
+    return `${patientURL}/diagnosis/${diagnosisId}`;
+}
+
+const getDiagnosesURL = (patientId: number): string => {
+    const patientURL = getPatientURL(patientId);
+    return `${patientURL}/diagnosis`;
+}
+
+
 //  ---------------- Doctors
 
 const doctorsUrl = (): string => {
@@ -102,6 +128,13 @@ export default {
     getReportURL,
     getReportsURL,
     getEmergencyContactURL,
+    getAllergyURL,
+    getAllergiesURL,
+
+    getDiagnosisURL,
+    getDiagnosesURL,
+
+
     doctorsUrl,
     getDoctorURL,
     getDoctorPatientsURL,
