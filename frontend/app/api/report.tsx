@@ -47,7 +47,7 @@ const getReport = async (patientId: number, diagnosisId: number): Promise<Report
 
 const getReports= async (patientId: number): Promise<Report[]> => {
     const diagnosisURL = API_CONFIG.getReportsURL(patientId);
-    const js = await API_CONFIG.sendRequest(diagnosisURL  + "/all" , 'GET', "");
+    const js = await API_CONFIG.sendRequest(diagnosisURL , 'GET', "");
     return js.map((item: any) => new Report(item));
 }
 

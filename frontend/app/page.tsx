@@ -1,3 +1,4 @@
+"use client";
 import SideNav from "./components/SideNav";
 import HeaderNav from './components/HeaderNav';
 import Card from './components/Card';

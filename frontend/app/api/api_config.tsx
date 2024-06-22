@@ -1,4 +1,4 @@
-const apiBaseURL: string = 'http://localhost:3000/api/';
+const apiBaseURL: string = 'https://medsync-msg-dcbbac5e8a38.herokuapp.com/api/';
 const apiVersion: string = 'v1';
 
 //  ---------------- Patients

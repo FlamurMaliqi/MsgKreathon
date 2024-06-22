@@ -1,6 +1,6 @@
-import API_CONFIG from './api_config.js';
-import { Doctor } from './doctor.jsx';
-import { EmergencyContact } from './ermergency.jsx';
+import API_CONFIG from './api_config';
+import { Doctor } from './doctor';
+import { EmergencyContact } from './ermergency';
 
 
 
