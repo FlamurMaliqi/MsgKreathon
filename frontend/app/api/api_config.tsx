@@ -39,16 +39,18 @@ const getVaccinationsURL = (patientId: string): string => {
 
 
 
-// ---------------- Diagnosis
-const getDiagnosisURL = (patientId: string, diagnosisId: string): string => {
+// ---------------- Reports
+const getReportURL = (patientId: string, diagnosisId: string): string => {
     const patientURL = getPatientURL(patientId);
-    return `${patientURL}/diagnosis/${diagnosisId}`;
+    return `${patientURL}/report/${diagnosisId}`;
 }
 
-const getDiagnosisesURL = (patientId: string): string => {
+const getReportsURL = (patientId: string): string => {
     const patientURL = getPatientURL(patientId);
-    return `${patientURL}/diagnosis`;
+    return `${patientURL}/report`;
 }
+
+
 
 
 
@@ -93,8 +95,8 @@ export default {
     getDrugsURL,
     getVaccinationURL,
     getVaccinationsURL,
-    getDiagnosisURL,
-    getDiagnosisesURL,
+    getReportURL,
+    getReportsURL,
     doctorsUrl,
     getDoctorURL,
     getDoctorPatientsURL,
