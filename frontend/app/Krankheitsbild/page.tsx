@@ -8,9 +8,7 @@ import { useEffect, useState } from "react";
 import { Allergy, getAllergies } from "../api/allergy";
 import { Diagnosis, getDiagnoses } from "../api/diagnosis";
 
-
-export
- default function Home(this: any) {
+export default function Home(this: any) {
 
   // const [allergies, setAllergies] = useState<Allergy[]>([]);
   // const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([]);

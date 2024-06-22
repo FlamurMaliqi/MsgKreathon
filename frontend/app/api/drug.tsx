@@ -1,5 +1,5 @@
-import API_CONFIG from './api_config.js'
-import { Doctor } from './doctor.jsx';
+import API_CONFIG from './api_config'
+import { Doctor } from './doctor';
 
 class Drug {
     id?: number;

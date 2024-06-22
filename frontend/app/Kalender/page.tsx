@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 
 interface CalendarProps {
@@ -14,10 +15,10 @@ const Calendar: React.FC<CalendarProps> = ({data, mode}) => {
         let dd = String(today.getDate()).padStart(2, '0');
         let mm = String(today.getMonth() + 1).padStart(2, '0'); 
         let yyyy = today.getFullYear();
-    }
+    }   
 
     const getData = (): any => {
-    
+        
     }
 
     if(!data) data = getData();
@@ -39,9 +40,7 @@ const Calendar: React.FC<CalendarProps> = ({data, mode}) => {
                     </ul>
                 </div>
             ))}
-        </div>
-        
-        
+        </div>        
     );
 
 };

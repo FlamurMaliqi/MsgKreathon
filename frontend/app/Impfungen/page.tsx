@@ -45,8 +45,6 @@ export
 
 
   return (
-
-    
      <main className="main-grid grid content-center" >
         
         <HeaderNav></HeaderNav>
