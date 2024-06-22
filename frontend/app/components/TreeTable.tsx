@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { TreeTable } from 'primereact/treetable';
 import { Column } from 'primereact/column';
 
-export default function BasicDemo() {
-    const [nodes, setNodes] = useState([]);
+export default function BasicDemo({nodes}:{nodes: any}) {
+
 
     useEffect(() => {
         // Dummy-Daten für Testzwecke
@@ -31,8 +31,6 @@ export default function BasicDemo() {
                 ]
             }
         ];
-
-        setNodes(data);
     }, []);
 
     return (

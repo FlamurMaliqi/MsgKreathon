@@ -1,5 +1,5 @@
-import API_CONFIG from './api_config.jsx';
-import { Doctor } from './doctor.jsx';
+import API_CONFIG from './api_config';
+import { Doctor } from './doctor';
 
 class Vaccination {
     id?: number;
@@ -13,7 +13,7 @@ class Vaccination {
     constructor(json: {
         id?: number;
         patientId: number;
-        administeringDoctor: Doctor;
+        administeringDoctor: any;
         vaccineName: string;
         vaccinationDate : Date;
         notificationDate: Date;

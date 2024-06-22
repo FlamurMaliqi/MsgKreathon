@@ -11,7 +11,7 @@ export default function BasicDemo({diagnoses}:{diagnoses: Diagnosis[]}) {
                         text={
                             "Diagnose von: " + diagnosis.issuedBy.name + "\n" +
                             "Schweregrad: " + diagnosis.severity + "\n" +
-                            "Diagnose am: " + new Date(diagnosis.dateDiagnosed).toLocaleString('de-DE') + "\n" +
+                            "Diagnose am: " + new Date(diagnosis.dateDiagnosed).toLocaleDateString('de-DE') + "\n" +
 
                             diagnosis.description
                         }

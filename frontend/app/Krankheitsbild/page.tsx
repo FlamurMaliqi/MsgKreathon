@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import { Allergy, getAllergies } from "../api/allergy";
 import { Diagnosis, getDiagnoses } from "../api/diagnosis";
 
-import { useLocation } from "react-router-dom";
-import { url } from "inspector";
 
 export
  default function Home(this: any) {
