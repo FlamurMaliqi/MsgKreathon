@@ -28,15 +28,15 @@ const getEmergencyContact = async (patientId: string): Promise<EmergencyContact>
 }
 
 
-const updateEmergencyContact = async (patientId: string, data: Object): Promise<EmergencyContact> => {
+const updateEmergencyContact = async (patientId: string, data: EmergencyContact): Promise<EmergencyContact> => {
     const emergencyContactURL = API_CONFIG.getEmergencyContactURL(patientId);
-    const js = await API_CONFIG.sendRequest(emergencyContactURL, 'PUT', data);
+    const js = await API_CONFIG.sendRequest(emergencyContactURL, 'PUT', data.toJson());
     return new EmergencyContact(js);
 }
 
-const createEmergencyContact = async (patientId: string, data: Object): Promise<EmergencyContact> => {
+const createEmergencyContact = async (patientId: string, data: EmergencyContact): Promise<EmergencyContact> => {
     const emergencyContactURL = API_CONFIG.getEmergencyContactURL(patientId);
-    const response = await API_CONFIG.sendRequest(emergencyContactURL, 'POST', data);
+    const response = await API_CONFIG.sendRequest(emergencyContactURL, 'POST', data.toJson());
     return new EmergencyContact(response);
 }
 

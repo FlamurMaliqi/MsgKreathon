@@ -29,13 +29,13 @@ const getPatient = async (patientId: string): Promise<Patient> => {
 };
 
 const createPatient = async (data: Patient): Promise<Patient> => {
-    const js = await API_CONFIG.sendRequest(API_CONFIG.patientsUrl(), 'POST', data);
+    const js = await API_CONFIG.sendRequest(API_CONFIG.patientsUrl(), 'POST', data.toJson());
     return new Patient(js);
 };
 
 const updatePatient = async (data:Patient) => {
     const patientURL = API_CONFIG.getPatientURL(data.id);
-    const js = await API_CONFIG.sendRequest(patientURL, 'PUT', data);
+    const js = await API_CONFIG.sendRequest(patientURL, 'PUT', data.toJson());
     return new Patient(js);
 };
 

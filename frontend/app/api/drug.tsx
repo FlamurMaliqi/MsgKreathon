@@ -36,13 +36,13 @@ const getDrugs = async (patientId: string): Promise<Drug[]> => {
 
 const createDrug = async (patientId: string, data: Drug): Promise<Drug> => {
     const treatmentsURL = API_CONFIG.getDrugsURL(patientId);
-    const js = await API_CONFIG.sendRequest(treatmentsURL, 'POST', data);
+    const js = await API_CONFIG.sendRequest(treatmentsURL, 'POST', data.toJson());
     return new Drug(js);
 }
 
 const updateDrug = async (patientId: string, data: Drug): Promise<Drug> => {
     const treatmentURL = API_CONFIG.getDrugURL(patientId, data.id);
-    const js = await API_CONFIG.sendRequest(treatmentURL, 'PUT', data);
+    const js = await API_CONFIG.sendRequest(treatmentURL, 'PUT', data.toJson());
     return new Drug(js);
 }
 

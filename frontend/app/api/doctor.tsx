@@ -56,13 +56,13 @@ const getDoctor = async (doctorId: string): Promise<Doctor> => {
 }
 
 const createDoctor = async (data: Doctor): Promise<Doctor> => {
-    const js = await API_CONFIG.sendRequest(API_CONFIG.doctorsUrl(), 'POST', data);
+    const js = await API_CONFIG.sendRequest(API_CONFIG.doctorsUrl(), 'POST', data.toJson());
     return new Doctor(js);
 }
 
 const updateDoctor = async (data: Doctor): Promise<Doctor> => {
     const doctorURL = API_CONFIG.getDoctorURL(data.id);
-    const js = await API_CONFIG.sendRequest(doctorURL, 'PUT', data);
+    const js = await API_CONFIG.sendRequest(doctorURL, 'PUT', data.toJson());
     return new Doctor(js);
 }
 
@@ -79,7 +79,7 @@ const addPatientToDoctor = async (doctorId: string, patientId: string): Promise<
 
 const searchPatients = async (doctorId: string, query: string): Promise<PatientHead[]> => {
     const doctorURL = API_CONFIG.getDoctorURL(doctorId);
-    const js = await API_CONFIG.sendRequest(`${doctorURL}/patients?search=${query}`, 'GET', "");
+    const js = await API_CONFIG.sendRequest(`${doctorURL}/patients/search/${query}`, 'GET', "");
     return js.map((p: any) => new PatientHead(p));
 }
 

@@ -35,13 +35,13 @@ const getVaccinations = async (patientId: string): Promise<Vaccination> => {
 
 const createVaccination = async (patientId: string, data: Vaccination): Promise<Vaccination> => {
     const vaccinationsURL = API_CONFIG.getVaccinationsURL(patientId);
-    const js = await API_CONFIG.sendRequest(vaccinationsURL, 'POST', data);
+    const js = await API_CONFIG.sendRequest(vaccinationsURL, 'POST', data.toJson());
     return new Vaccination(js);
 }
 
 const updateVaccination = async (patientId: string, data: Vaccination): Promise<Vaccination> => {
     const vaccinationURL = API_CONFIG.getVaccinationURL(patientId, data.id);
-    const js = await API_CONFIG.sendRequest(vaccinationURL, 'PUT', data);
+    const js = await API_CONFIG.sendRequest(vaccinationURL, 'PUT', data.toJson());
     return new Vaccination(js);
 }
 

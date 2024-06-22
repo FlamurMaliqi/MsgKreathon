@@ -35,13 +35,13 @@ const getReports= async (patientId: string): Promise<Report> => {
 
 const createReport = async (patientId: string, data: Report): Promise<Report> => {
     const diagnosisURL = API_CONFIG.getReportsURL(patientId);
-    const js = await API_CONFIG.sendRequest(diagnosisURL, 'POST', data);
+    const js = await API_CONFIG.sendRequest(diagnosisURL, 'POST', data.toJson());
     return new Report(js);
 }
 
 const updateReport = async (patientId: string, data: Report): Promise<Report> => {
     const diagnosisURL = API_CONFIG.getReportURL(patientId, data.id);
-    const js = await API_CONFIG.sendRequest(diagnosisURL, 'PUT', data);
+    const js = await API_CONFIG.sendRequest(diagnosisURL, 'PUT', data.toJson());
     return new Report(js);
 }
 
