@@ -5,13 +5,15 @@ import AccordionElement from "./components/AccordionElement";
 
 export default function Home() {
   return (
-    <main className="grid min-h-screen">
+    <main className="main-grid grid min-h-screen">
       <HeaderNav/>
       <SideNav/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+      <div className="content h-[92vh] overflow-scroll p-4">
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+      </div>
     </main>
   );
 }

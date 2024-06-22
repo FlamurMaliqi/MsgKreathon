@@ -14,11 +14,12 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        sans: ['Lato', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+        sans: ['Nunito', 'sans-serif'],
+        serif: ['Source Sans Pro', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
+
 export default config;
