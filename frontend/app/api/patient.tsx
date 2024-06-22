@@ -1,28 +1,87 @@
 import API_CONFIG from './api_config.js';
+import { Doctor } from './doctor.jsx';
+import { EmergencyContact } from './ermergency.jsx';
+
 
 
 class Patient {
-    id?: string;
+    id?: number;
     name: string;
-
+    surname: string;
+    kvr: string;
+    familyDoctor: Doctor;
+    healthInsuranceProvider: string;
+    birthday: string;
+    weightKg: number;
+    heightCm: number;
+    email: string;
+    phone: string;
+    street: string;
+    houseNumber: string;
+    postalCode: string;
+    city: string;
+    emergencyContact: EmergencyContact;
+    
+ 
     constructor(json: {
-        id?: string;
+        patientId?: number;
         name: string;
+        surname: string;
+        kvr: string;
+        familyDoctor: Doctor;
+        healthInsuranceProvider: string;
+        birthday: string;
+        weightKg: number;
+        heightCm: number;
+        email: string;
+        phone: string;
+        street: string;
+        houseNumber: string;
+        postalCode: string;
+        city: string;
+        emergencyContact: Object;
     }) {
-        this.id = json.id;
+        this.id = json.patientId;
         this.name = json.name;
-        
+        this.surname = json.surname;
+        this.kvr = json.kvr;
+        this.familyDoctor = new Doctor(json.familyDoctor);
+        this.healthInsuranceProvider = json.healthInsuranceProvider;
+        this.birthday = json.birthday;
+        this.weightKg = json.weightKg;
+        this.heightCm = json.heightCm;
+        this.email = json.email;
+        this.phone = json.phone;
+        this.street = json.street;
+        this.houseNumber = json.houseNumber;
+        this.postalCode = json.postalCode;
+        this.city = json.city;
+        this.emergencyContact = new EmergencyContact(json.emergencyContact as any);
     }
 
     toJson(): Object {
         return {
             id: this.id,
             name: this.name,
+            surname: this.surname,
+            kvr: this.kvr,
+            familyDoctor: this.familyDoctor.toJson(),
+            healthInsuranceProvider: this.healthInsuranceProvider,
+            birthday: this.birthday,
+            weightKg: this.weightKg,
+            heightCm: this.heightCm,
+            email: this.email,
+            phone: this.phone,
+            street: this.street,
+            houseNumber: this.houseNumber,
+            postalCode: this.postalCode,
+            city: this.city,
+            emergencyContact: this.emergencyContact.toJson()
         };
     }
 }
 
-const getPatient = async (patientId: string): Promise<Patient> => {
+const getPatient = async (patientId: number): Promise<Patient> => {
     const patientURL = API_CONFIG.getPatientURL(patientId);
     const js = await API_CONFIG.sendRequest(patientURL, 'GET', "");
     return new Patient(js);
@@ -39,8 +98,8 @@ const updatePatient = async (data:Patient) => {
     return new Patient(js);
 };
 
-const deletePatient = async (patientId: Patient | string) => {
-    if (typeof patientId !== 'string') {
+const deletePatient = async (patientId: Patient | number) => {
+    if (typeof patientId !== 'number') {
         patientId = patientId.id!;
     }
     const patientURL = API_CONFIG.getPatientURL(patientId);

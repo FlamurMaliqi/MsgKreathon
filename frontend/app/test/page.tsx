@@ -7,8 +7,16 @@ export
  default function Test() {
 
     var d = new Doctor({
-        id: "1",
+        doctorId: 1,
         name: "TestDoktor",
+        surname: "TestNachname",
+        speciality: "TestFach",
+        email: "",
+        phone: "",
+        street: "",
+        houseNumber: "",
+        postalCode: "",
+        city: ""
     });
 
   return (

@@ -6,19 +6,19 @@ const patientsUrl = (): string => {
     return `${apiBaseURL}${apiVersion}/patient`;
 }
 
-const getPatientURL = (patientId: string): string => {
+const getPatientURL = (patientId: number): string => {
     return `${apiBaseURL}${apiVersion}/patient/${patientId}`;
 };
 
 
 //  ---------------- Treatments
 
-const getDrugURL = (patientId: string, drugId: string): string => {
+const getDrugURL = (patientId: number, drugId: number): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/drug/${drugId}`;
 };
 
-const getDrugsURL = (patientId: string): string => {
+const getDrugsURL = (patientId: number): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/drug`;
 };
@@ -27,12 +27,12 @@ const getDrugsURL = (patientId: string): string => {
 
 
 // ---------------- Vaccinations
-const getVaccinationURL = (patientId: string, vaccinationId: string): string => {
+const getVaccinationURL = (patientId: number, vaccinationId: number): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/vaccination/${vaccinationId}`;
 }
 
-const getVaccinationsURL = (patientId: string): string => {
+const getVaccinationsURL = (patientId: number): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/vaccination`;
 }
@@ -40,18 +40,18 @@ const getVaccinationsURL = (patientId: string): string => {
 
 
 // ---------------- Reports
-const getReportURL = (patientId: string, diagnosisId: string): string => {
+const getReportURL = (patientId: number, diagnosisId: number): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/report/${diagnosisId}`;
 }
 
-const getReportsURL = (patientId: string): string => {
+const getReportsURL = (patientId: number): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/report`;
 }
 
 
-const getEmergencyContactURL = (patientId: string): string => {
+const getEmergencyContactURL = (patientId: number): string => {
     const patientURL = getPatientURL(patientId);
     return `${patientURL}/ice`;
 }
@@ -63,11 +63,11 @@ const doctorsUrl = (): string => {
     return `${apiBaseURL}${apiVersion}/doctor`;
 }
 
-const getDoctorURL = (doctorId: string): string => {
+const getDoctorURL = (doctorId: number): string => {
     return `${apiBaseURL}${apiVersion}/doctor/${doctorId}`;
 };
 
-const getDoctorPatientsURL = (doctorId: string): string => {
+const getDoctorPatientsURL = (doctorId: number): string => {
     const doctorURL = getDoctorURL(doctorId);
     return `${doctorURL}/patients`;
 };
