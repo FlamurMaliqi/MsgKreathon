@@ -4,7 +4,7 @@ import { getPatient, Patient } from "./patient";
 const account = {
     userId: parseInt(localStorage.getItem('userId') || '-1'),
     isDoctor: localStorage.getItem('isDoctor') === 'true' || false,
-    loggedIn: false,
+    loggedIn: localStorage.getItem('userId') !== null,
     userName: localStorage.getItem('userName') || '',
     async login(isDoctor: boolean, userId: number) {
         // check if doctor or patient exists

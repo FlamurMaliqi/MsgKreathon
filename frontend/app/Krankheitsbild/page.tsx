@@ -11,28 +11,32 @@ import { Diagnosis, getDiagnoses } from "../api/diagnosis";
 
 export default function Home(this: any) {
 
-  // const [allergies, setAllergies] = useState<Allergy[]>([]);
+  const [allergies, setAllergies] = useState<Allergy[]>([]);
   // const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([]);
 
 
   const urlParams = new URLSearchParams(window.location.search)
   const patientId = parseInt(urlParams.get('patientId') || "1");
-  // useEffect(() => {
-  //   getAllergies(patientId).then((allergies) => setAllergies(allergies));
-  //   getDiagnoses(patientId).then((diagnoses) => setDiagnoses(diagnoses));
-  // }, []);
+    useEffect(() => {
+      getAllergies(patientId).then((allergies) => setAllergies(allergies));
+      // getDiagnoses(patientId).then((diagnoses) => setDiagnoses(diagnoses));
+    }, []);
 
-  const allergies = [
-    new Allergy({
-      id: 1,
-      patientId: 1,
-      allergen: "Gräser Roggen",
-      reaction: "Niesen",
-      severity: "Mittel",
-      dateDiagnosed: new Date(),
-      notes: "Allergie gegen Gräser Roggen"
-    })
-  ]
+    // const allergies = [
+    //   new Allergy({
+    //     id: 1,
+    //     patientId: 1,
+    //     allergen: "Gräser Roggen",
+    //     reaction: "Niesen",
+    //     severity: "Mittel",
+    //     dateDiagnosed: new Date(),
+    //     notes: "Allergie gegen Gräser Roggen"
+    //   })
+    // ]
+  
+    if (allergies.length == 0) {
+      return <div>Loading...</div>;
+    }
 
   const diagnoses = [
       new Diagnosis({
@@ -53,7 +57,7 @@ export default function Home(this: any) {
       }),
   ]
 
-  const [open, setOpen] = useState(false);
+
 
   return (
     <main className="main-grid grid">
@@ -61,15 +65,19 @@ export default function Home(this: any) {
     <SideNav/>
       <div className="content h-[92vh] overflow-scroll p-4 w-[88vw]">
         <AccordionElement 
-          labels={["Allergien"]}
-          values={allergies.map((allergy) => allergy.allergen)}
+          labels={allergies.map((allergy) => allergy.allergen)}
+          values={allergies.map((allergy) => 
+            allergy.allergen + "\n" + 
+            allergy.reaction + "\n" + 
+            allergy.severity + "\n" + 
+            new Date(allergy.dateDiagnosed).toLocaleDateString("de-De") + "\n" + 
+            allergy.notes
+          )}
         />
         <Krankheitsbild 
           diagnoses={diagnoses}
         />
-        <div onClick={() => setOpen(!open)}>
-          <Dialog openToggle={open}/>
-        </div>
+
       </div>
     </main>
   );

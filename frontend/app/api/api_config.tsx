@@ -106,13 +106,19 @@ const getDoctorPatientsURL = (doctorId: number): string => {
 
 
 const sendRequest = async (url: string, method: string, body: any): Promise<any> => {
+    console.log(url);
+    console.log(body);
+    console.log(method)
     const response = await fetch(url, {
         method: method,
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
+
         body: body == "" ? undefined : JSON.stringify(body),
-    });
+    })
+    
+    
     return response.json();
 };
 

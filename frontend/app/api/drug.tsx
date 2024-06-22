@@ -56,6 +56,7 @@ const getDrug = async (patientId: number, treatmentId: number): Promise<Drug> =>
 const getDrugs = async (patientId: number): Promise<Drug[]> => {
     const treatmentsURL = API_CONFIG.getDrugsURL(patientId);
     const js = await API_CONFIG.sendRequest(treatmentsURL + "/all", 'GET', "");
+    console.log(js);
     return js.map((json: any) => new Drug(json));
 }
 

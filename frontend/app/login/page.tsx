@@ -4,9 +4,10 @@ import Account from "../api/account";
 export
  default function Home() {
 
-    function login(isDoctor: boolean) {
+    async function login(isDoctor: boolean) {
         const patientId = document.getElementById('patientId') as HTMLInputElement;
-        Account.login(isDoctor, parseInt(patientId.value));
+        await Account.login(isDoctor, parseInt(patientId.value));
+        window.location.href = '/';
     }
 
     return (

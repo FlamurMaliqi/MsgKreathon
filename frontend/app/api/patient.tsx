@@ -20,7 +20,7 @@ class Patient {
     houseNumber: string;
     postalCode: string;
     city: string;
-    emergencyContact: EmergencyContact;
+    emergencyContact?: EmergencyContact;
     
  
     constructor(json: {
@@ -39,7 +39,7 @@ class Patient {
         houseNumber: string;
         postalCode: string;
         city: string;
-        emergencyContact: Object;
+        emergencyContact?: Object;
     }) {
         this.id = json.patientId;
         this.name = json.name;
@@ -56,7 +56,8 @@ class Patient {
         this.houseNumber = json.houseNumber;
         this.postalCode = json.postalCode;
         this.city = json.city;
-        this.emergencyContact = new EmergencyContact(json.emergencyContact as any);
+        if (json.emergencyContact)
+            this.emergencyContact = new EmergencyContact(json.emergencyContact as any);
     }
 
     toJson(): Object {
