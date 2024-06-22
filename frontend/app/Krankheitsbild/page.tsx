@@ -1,4 +1,4 @@
-import Krankheitsbild from "../components/Krankheitsbild"
+    import Krankheitsbild from "../components/Krankheitsbild"
 import HeaderNav from "../components/HeaderNav"
 import SideNav from "../components/SideNav";
 
@@ -7,16 +7,12 @@ import SideNav from "../components/SideNav";
 export
  default function Home() {
   return (
-    <main>
+    <main className="main-grid grid">
     <HeaderNav></HeaderNav>
-    <div className="grid grid-cols-2">
-        <div className = "col-fixed" style='width:100px'>
-            <SideNav></SideNav>
-        </div>
-        <div className ="col">
-            <Krankheitsbild></Krankheitsbild>
-        </div>
-    </div>
+    <SideNav/>
+      <div className="content h-[92vh] overflow-scroll p-4">
+        <Krankheitsbild />
+      </div>
     </main>
   );
 }
