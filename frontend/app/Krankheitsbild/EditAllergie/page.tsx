@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { Doctor } from "@/app/api/doctor";
 import JsonConnectedDatePicker from "@/app/components/jsonUtil/jsonConnectedDate";
 import { Allergy, createAllergy, getAllergies } from "@/app/api/allergy";
+import JsonConnectedSelect from "@/app/components/jsonUtil/jsonConnectedSelect";
+import Enums from "@/app/api/enums";
 
 export default function Home() {
 
@@ -26,7 +28,7 @@ export default function Home() {
             allergen: "",
             patientId: patientId,
             reaction: "",
-            dateDiagnosed: (new Date()).toLocaleDateString("de-DE"),
+            dateDiagnosed: (new Date()).toDateString(),
             severity: "",
             notes: "",
         });
@@ -64,12 +66,21 @@ export default function Home() {
                         <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                             Allergen
                         </label>
-                        <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                        {/* <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                             json={d}
                             jsonPath="allergen"
                             displayName="Allergen"
                             updateFunction={() => {
                             }}
+                        /> */}
+
+                        <JsonConnectedSelect 
+                            json={d} 
+                            jsonPath="allergen" 
+                            displayName="Allergen" 
+                            updateFunction={() => {}} 
+                            className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500" 
+                            selectables={Enums.PossibleAllergens} 
                         />
                     </div>
 
@@ -90,12 +101,21 @@ export default function Home() {
                         <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                             Schweregrad
                         </label>
-                        <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                        {/* <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                             json={d}
                             jsonPath="severity"
                             displayName="Schweregrad"
                             updateFunction={() => {
                             }}
+                        /> */}
+
+                        <JsonConnectedSelect 
+                            json={d} 
+                            jsonPath="severity" 
+                            displayName="Schweregrad" 
+                            updateFunction={() => {}} 
+                            className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500" 
+                            selectables={Enums.PossibleSeverities}
                         />
                     </div>
 

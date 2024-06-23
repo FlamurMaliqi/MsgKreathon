@@ -17,7 +17,7 @@ class Diagnosis {
         illness: string;
         description: string;
         severity: string;
-        dateDiagnosed: Date;
+        dateDiagnosed: string;
     }) {
         this.id = json.id;
         this.patientId = json.patientId;
@@ -25,14 +25,14 @@ class Diagnosis {
         this.illness = json.illness;
         this.description = json.description;
         this.severity = json.severity;
-        this.dateDiagnosed = json.dateDiagnosed;
+        this.dateDiagnosed = new Date(json.dateDiagnosed);
     }
 
     toJson(): Object {
         return {
             id: this.id,
-            patientId: this.patientId,
-            issuedBy: this.issuedBy.toJson(),
+            patient: { patientId: this.patientId },
+            issuedBy: this.issuedBy,
             illness: this.illness,
             description: this.description,
             severity: this.severity,

@@ -7,6 +7,9 @@ import { Doctor } from "@/app/api/doctor";
 import JsonConnectedDatePicker from "@/app/components/jsonUtil/jsonConnectedDate";
 import { Diagnosis, createDiagnosis, getDiagnosis } from "@/app/api/diagnosis";
 import account from "@/app/api/account";
+import JsonConnectedSelect from "@/app/components/jsonUtil/jsonConnectedSelect";
+import enums from "@/app/api/enums";
+
 export default function Home() {
 
     const [d, setD] = useState(null as unknown as Diagnosis);
@@ -39,14 +42,14 @@ export default function Home() {
             id: undefined,   
             patientId: patientId,
             illness: "",
-            dateDiagnosed: new Date(),
+            dateDiagnosed: (new Date()).toDateString(),
             severity: "",
             description: "",
             issuedBy: new Doctor({
                 doctorId: account.userId,
-                name: "Dr. Müller",
-                surname: "Müller",
-                speciality: "Allgemeinmedizin",
+                name: "",
+                surname: "",
+                speciality: "",
                 email: "",
                 phone: "",
                 street: "",
@@ -82,19 +85,29 @@ export default function Home() {
                             updateFunction={() => {
                             }}
                         />
+                        
                     </div>
 
                     <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                             Schweregrad
                         </label>
-                        <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                        {/* <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                             json={d}
                             jsonPath="severity"
                             displayName="Schweregrad"
                             updateFunction={() => {
                             }}
+                        /> */}
+                        <JsonConnectedSelect 
+                            json={d} 
+                            jsonPath="severity" 
+                            displayName="Schweregrad" 
+                            updateFunction={() => {}} 
+                            className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500" 
+                            selectables={enums.PossibleSeverities}
                         />
+
                     </div>
 
                     <div className="w-full px-3">
@@ -103,22 +116,8 @@ export default function Home() {
                         </label>
                         <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                             json={d}
-                            jsonPath="notes"
+                            jsonPath="description"
                             displayName="Notizen"
-                            updateFunction={() => {
-                            }}
-                        />
-                    </div>
-
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
-                            Diagnosedatum
-                        </label>
-                        <JsonConnectedDatePicker
-                            className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                            json={d}
-                            jsonPath="dateDiagnosed"
-                            displayName="Diagnosedatum"
                             updateFunction={() => {
                             }}
                         />
@@ -135,7 +134,7 @@ export default function Home() {
                 type="button"
                 onClick={async () => {
                     await createDiagnosis(patientId, d);
-                    window.location.href = "/";
+                    // window.location.href = "/?patientId=" + patientId;
                 }}
                 >
                 Speichern
