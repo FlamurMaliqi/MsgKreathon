@@ -4,7 +4,6 @@ import HeaderNav from "../components/HeaderNav"
 import SideNav from "../components/SideNav";
 import AccordionElement from "../components/AccordionElement";  
 import { useEffect, useState } from "react";
-
 import { Allergy, getAllergies } from "../api/allergy";
 import { Diagnosis, getDiagnoses } from "../api/diagnosis";
 import AddDialog from "../components/AddDialog";
