@@ -275,11 +275,12 @@ export default function Home() {
 
             <button className="absolute bottom-5 left-[12vw] ml-4 hover:bg-[var(--primary)] text-[var(--primary)] bg-white font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
                 type="button"
-                onClick={async () => {
-                    localStorage.clear();
-                    window.location.href = "/login";
-                }}
-            >
+                onClick={
+                    async () => {
+                        localStorage.clear();
+                        window.location.href = "/login";
+                    }}
+                >
                 Abmelden
             </button>
         </main>

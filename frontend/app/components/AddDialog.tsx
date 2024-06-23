@@ -3,6 +3,7 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/re
 import EditImpfungen from "../Impfungen/Edit/page";
 import EditAllergie from "../Krankheitsbild/EditAllergie/page";
 import EditDiagnose from "../Krankheitsbild/EditDiagnose/page";
+import Benachrichtigung from './Benachrichtigung';
 // import EditTermin from "../Termin/EditTermin
 
 interface DialogComponentProps {
@@ -27,8 +28,11 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                 return <EditImpfungen />;
             case "Allergie":
                 return <EditAllergie />;
-            case "Termin":
+            case "Benachrichtigung":
+                return <Benachrichtigung />;
+            case "PatientWechseln":
                 window.location.href = '/choosePatient';
+                break;
             default:
                 return null;
         }
@@ -54,7 +58,9 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                                     <a href="#" onClick={() => setMode("Diagnose")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Diagnose</a>
                                     <a href="#" onClick={() => setMode("Impfungen")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Impfungen</a>
                                     <a href="#" onClick={() => setMode("Allergie")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Allergie</a>
-                                    <a href="#" onClick={() => setMode("Termin")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Partient wechseln</a>
+                                    <a href="#" onClick={() => setMode("PatientWechseln")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded w-max">Partient wechseln</a>
+                                    {/* <a href="#" onClick={() => setMode("Termin")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Termin</a> */}
+                                    <a href="#" onClick={() => setMode("Benachrichtigung")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Benachrichtigung</a>
                                 </nav>
                             </div>
                             
