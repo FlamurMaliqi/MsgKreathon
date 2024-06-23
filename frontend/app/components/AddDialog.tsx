@@ -27,8 +27,8 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                 return <EditImpfungen />;
             case "Allergie":
                 return <EditAllergie />;
-            // case "Termin":
-            //     return "<EditTermin />";
+            case "Termin":
+                window.location.href = '/choosePatient';
             default:
                 return null;
         }
@@ -54,7 +54,7 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                                     <a href="#" onClick={() => setMode("Diagnose")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Diagnose</a>
                                     <a href="#" onClick={() => setMode("Impfungen")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Impfungen</a>
                                     <a href="#" onClick={() => setMode("Allergie")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Allergie</a>
-                                    <a href="#" onClick={() => setMode("Termin")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Termin</a>
+                                    <a href="#" onClick={() => setMode("Termin")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Partient wechseln</a>
                                 </nav>
                             </div>
                             
