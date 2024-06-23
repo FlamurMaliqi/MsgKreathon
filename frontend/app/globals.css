@@ -146,6 +146,21 @@ aside ul li a:hover:after{
   opacity: 0.9; 
 }
 
+.side-nav-item.active {
+  color: var(--onPrimary);
+  background-color: var(--primary);
+  padding: 0.5rem;
+  border-bottom: var(--primary) solid 5px;
+  border-top: var(--primary) solid 5px;
+  border-spacing: 3px;
+  border-radius: 75px;
+}
+
+.side-nav-item.active .side-nav-link {
+  color: var(--onPrimary);
+}
+
+
 /* Table Style */
 .p-treetable-tbody td{
   color: var(--onTritary);

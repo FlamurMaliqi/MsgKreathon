@@ -24,7 +24,7 @@ export default function Home() {
         patient.phone + "\n" + patient.email + "\n" + patient.birthday
       );
     });
-  }, []);
+  }, [patientID]);
 
   
   if (!Account.loggedIn) {
@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <main className="main-grid grid min-h-screen">
       <HeaderNav/>
-      <SideNav/>
+      <SideNav activeID={0}/>
       <div className="content dashboard-grid h-[92vh] overflow-scroll p-4 grid gap-4">
         <Card className="dashboard-area-a" title="Persöhnliche Daten" text={personalData}/>
         <Card className="dashboard-area-b" title="Termine"/>

@@ -5,9 +5,17 @@ import SideNav from "../components/SideNav";
 import { useEffect, useState } from "react";
 import { Vaccination, getVaccinations } from "../api/vaccination";
 import { Allergy, getAllergies } from "../api/allergy";
+import AddDialog from "../components/AddDialog";
+import { IoAddSharp } from "react-icons/io5";
 
 export
  default function Home() {
+
+  
+  const [open, setOpen] = useState(false);
+  const handleToggleDialog = () => {
+    setOpen(true);
+  };
 
 
   // const [allergies, setAllergies] = useState<Allergy[]>([]);
@@ -48,7 +56,7 @@ export
      <main className="main-grid grid content-center" >
         
         <HeaderNav></HeaderNav>
-        <SideNav/>
+        <SideNav activeID={4}/>
         <div className="p-4 w-[88vw]">
             <TreeTable
           nodes={vaccinations.map((vaccination) => {
@@ -64,6 +72,8 @@ export
             };
           })} onRowClick={undefined}            />
         </div>
+        <span className="absolute z-40 right-4 bottom-4"><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
+        <AddDialog openToggle={open} setOpen={setOpen} title={"Update"} data={"Langer Kontnet"} />
 
     </main>
   );

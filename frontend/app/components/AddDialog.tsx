@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import EditImpfungen from "../Impfungen/Edit/page";
 import EditAllergie from "../Krankheitsbild/EditAllergie/page";
+import EditDiagnose from "../Krankheitsbild/EditDiagnose/page";
 // import EditTermin from "../Termin/EditTermin
 
 interface DialogComponentProps {
@@ -20,6 +21,8 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
 
     const renderContent = () => {
         switch (mode) {
+            case "Diagnose":
+                return <EditDiagnose />;
             case "Impfungen":
                 return <EditImpfungen />;
             case "Allergie":
@@ -48,6 +51,7 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                             {/* Side Navigation */}
                             <div className="bg-[var(--tritary)] w-fit p-4">
                                 <nav className="flex flex-col space-y-2">
+                                    <a href="#" onClick={() => setMode("Diagnose")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Diagnose</a>
                                     <a href="#" onClick={() => setMode("Impfungen")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Impfungen</a>
                                     <a href="#" onClick={() => setMode("Allergie")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Allergie</a>
                                     <a href="#" onClick={() => setMode("Termin")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Termin</a>

@@ -6,8 +6,14 @@ import { Drug } from '../api/drug';
 import { Accordion } from 'primereact/accordion';
 import HeaderNav from '../components/HeaderNav';
 import SideNav from '../components/SideNav';
+import AddDialog from '../components/AddDialog';
 
 const Medikante: React.FC = () => {
+
+    const [open, setOpen] = useState(false);
+    const handleToggleDialog = () => {
+        setOpen(true);
+    };
 
     // const [medikamente, setMedikamente] = useState<Drug[]>([]);
     // const [labels, setLabels] = useState<string[]>([]);
@@ -50,15 +56,18 @@ const Medikante: React.FC = () => {
 
     return (
         <main className="main-grid grid">
-        <HeaderNav/>
-        <SideNav/>
-          <div className="content h-[92vh] overflow-scroll p-4 w-[88vw]">
-            <div className="Medikamente grid grid-cols-2 gap-8">
-                {labels.map((label, index) =>
-                    <AccordionElement key={index} labels={[label]} values={[values[index]]}/>
-                )}
+            <HeaderNav/>
+            <SideNav activeID={3}/>
+            <div className="content h-[92vh] overflow-scroll p-4 w-[88vw]">
+                <div className="Medikamente grid grid-cols-2 gap-8">
+                    {labels.map((label, index) =>
+                        <AccordionElement key={index} labels={[label]} values={[values[index]]}/>
+                    )}
+                </div>
             </div>
-        </div>
+            <span className="absolute z-40 right-4 bottom-4"><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
+            <AddDialog openToggle={open} setOpen={setOpen} title={"Update"} data={"Langer Kontnet"} />
+
         </main>
     );
 };

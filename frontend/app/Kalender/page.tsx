@@ -1,5 +1,7 @@
 "use client";
 import React from 'react';
+import HeaderNav from '../components/HeaderNav';
+import SideNav from '../components/SideNav';
 
 interface CalendarProps {
     data: Map<string, string[]>; // key: month/ kw value: list of meds / list of appointments
@@ -28,19 +30,23 @@ const Calendar: React.FC<CalendarProps> = ({data, mode}) => {
         groupingBy = "KW"
     }
     return (
-        <div className="h-[100vh]">
-            <h2 className="headline">{groupingBy}</h2>
-            {data && Object.entries(data).map(([key, value]: [string, string[]]) => ( 
-                <div className="calendar" key={key}>
-                    <h1>{key}</h1>
-                    <ul>
-                        {value.map((med: string, index: number) => (
-                            <li key={index}>{med}</li>
-                        ))}
-                    </ul>
-                </div>
-            ))}
-        </div>        
+        <main className="main-grid grid min-h-screen">
+            <HeaderNav/>
+            <SideNav activeID={42}/>
+            <div className="h-[100vh]">
+                <h2 className="headline">{groupingBy}</h2>
+                {data && Object.entries(data).map(([key, value]: [string, string[]]) => ( 
+                    <div className="calendar" key={key}>
+                        <h1>{key}</h1>
+                        <ul>
+                            {value.map((med: string, index: number) => (
+                                <li key={index}>{med}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div> 
+        </main>       
     );
 
 };

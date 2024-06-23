@@ -90,9 +90,9 @@ export default function Home() {
     return (
         <main className="main-grid grid min-h-screen">
             <HeaderNav></HeaderNav>
-            <SideNav />
-            <div className="content h-[92vh] w-[88vw] overflow-y-scroll grid grid-cols-2 justify-items-center pt-4">
-                <form className="w-full h-fit max-w-lg p-4 bg-[--secondary] rounded">
+            <SideNav activeID={42}/>
+            <div className="content h-[92vh] w-[88vw] overflow-y-scroll grid grid-cols-2 justify-items-center p-4 gap-4">
+                <form className="w-full h-fit p-4 bg-[--secondary] rounded">
                     <h3 className="headline mb-4">Persönliche Informationen</h3>
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -204,7 +204,7 @@ export default function Home() {
                     </div>
                 </form>
 
-                <form className="w-full max-w-lg bg-[var(--secondary)] p-4 h-fit rounded">
+                <form className="w-full bg-[var(--secondary)] p-4 h-fit rounded">
                     <h3 className="headline mb-4">Notfallkontakt</h3>
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
@@ -273,7 +273,7 @@ export default function Home() {
                 Speichern
             </button>
 
-            <button className="absolute bottom-5 left-[15vw] bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+            <button className="absolute bottom-5 left-[12vw] ml-4 bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
                 type="button"
                 onClick={async () => {
                     localStorage.clear();
