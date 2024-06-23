@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Children } from 'react';
 import { TreeTable } from 'primereact/treetable';
 import { Column } from 'primereact/column';
 import DialogComponent from "../components/Dialog";
 import { Diagnosis } from '../api/diagnosis';
 import { Report } from '../api/report';
+import { report } from 'process';
 
 export default function Befunde() {
     const [nodes, setNodes] = useState([]);
@@ -16,58 +17,66 @@ export default function Befunde() {
         setOpen(true);
         setData(e.node.data);
         
-        const content = dialogData.diagnose; //dialogData.diagnosis.illness + '\n' + dialogData.diagnosis.description + '\n' + dialogData.diagnosis.severity + '\n' + dialogData.diagnosis.dateDiagnosed;
-        setDialogContent(content);
-        console.log(content)
+        const content:Report = e.node.report;
+
+        setDialogContent(
+            "Datum: " + content.date.toLocaleDateString("de-DE") + "\n" +
+            "Typ: " + content.reportType + "\n" +
+            "Diagnose: " + content.diagnosis.illness + "\n" +
+            "Arzt: " + content.diagnosis.issuedBy.name + "\n" +
+            "Note: " + content.findings + "\n" +
+            "Findungen: " + content.findings + "\n" +
+            "Empfehlungen: " + content.recommendations + "\n"
+        );
     };
 
     useEffect(() => {
         // Dummy-Daten aktualisieren
         const data = [
-            {
-                key: '0',
-                data: { datum: '2024-01-01', typ: 'Impfung', diagnose: 'Impfstoff A', arzt: 'Dr. Müller', note: 'Nächster Termin: 2024-07-01' },
-                children: [
-                    {
-                        key: '0-0',
-                        data: { datum: '', typ: 'Info', diagnose: '', arzt: '', note: 'Dies ist ein einfacher Text.' }
-                    }
-                ]
-            },
-            {
-                key: '1',
-                data: { datum: '2023-06-01', typ: 'Impfung', diagnose: 'Impfstoff B', arzt: 'Dr. Schmidt', note: 'Nächster Termin: 2023-12-01' },
-                children: [
-                    {
-                        key: '1-0',
-                        data: { datum: '', typ: 'Info', diagnose: '', arzt: '', note: 'Dies ist ein weiterer Text.' }
-                    }
-                ]
-            },
-            // Hinzufügen weiterer Dummy-Daten
-            {
-                key: '2',
-                data: { datum: '2023-08-15', typ: 'Check-up', diagnose: 'Allgemeine Untersuchung', arzt: 'Dr. Weber', note: 'Alles in Ordnung' },
-                children: [
-                    {
-                        key: '2-0',
-                        data: { datum: '', typ: 'Info', diagnose: '', arzt: '', note: 'Nächste Untersuchung in einem Jahr.' }
-                    }
-                ]
-            },
-            {
-                key: '3',
-                data: { datum: '2023-03-22', typ: 'Beratung', diagnose: 'Ernährungsberatung', arzt: 'Dr. Neumann', note: 'Ernährungsplan erhalten' },
-                children: [
-                    {
-                        key: '3-0',
-                        data: { datum: '', typ: 'Info', diagnose: '', arzt: '', note: 'Folgetermin in 6 Monaten.' }
-                    }
-                ]
-            }
+            new Report({
+                id: 1,
+                patientId: 1,
+                date: new Date(),
+                diagnosis: new Diagnosis({
+                    id: 1,
+                    patientId: 1,
+                    issuedBy: {
+                      id: 1,
+                      name: "Dr. Mustermann",
+                      address: "Musterstraße 1",
+                      phone: "0123456789",
+                      email: " ",
+                      speciality: "Allgemeinmedizin"
+                    },
+                    illness: "Diabetis",
+                    description: "Husten seit 3 Wochen",
+                    severity: "Mittel",
+                    dateDiagnosed: new Date()
+                }),
+                findings: "Husten seit 3 Wochen",
+                recommendations: "Viel trinken",
+                reportType: "Arztbrief",
+            }),
         ];
+        
+        const d = data.map((item, index) => {
+            return {
+                key: index,
+                data: {
+                    datum: item.date.toLocaleDateString("de-DE"),
+                    typ: item.reportType,
+                    diagnose: item.diagnosis.illness,
+                    arzt: item.diagnosis.issuedBy.name,
+                    note: item.findings,
+                    diagnosis: item.diagnosis
+                },
+                report: item
+            }
+        });
+        
 
-        setNodes(data);
+
+        setNodes(d);
     }, []);
 
     return (

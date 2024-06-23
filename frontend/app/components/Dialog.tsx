@@ -29,7 +29,9 @@ export default function DialogComponent({ openToggle, setOpen, title, data } : {
                                     </DialogTitle>
                                     <div className="mt-2">
                                         <p className="text-sm text-gray-500">
-                                            {data}
+                                            {data.split('\n').map((item, key) => {
+                                                return <span key={key}>{item}<br/></span>
+                                            })}
                                         </p>
                                     </div>
                                 </div>
