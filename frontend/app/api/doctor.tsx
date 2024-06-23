@@ -30,7 +30,7 @@ class Doctor {
         this.id = json.doctorId;
         this.doctorId = json.doctorId;
         this.name = json.name;
-        this.surname = json.surname;
+        this.surname = json.surname || "";
         this.speciality = json.speciality;
         this.email = json.email;
         this.phone = json.phone;
