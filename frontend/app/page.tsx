@@ -27,9 +27,9 @@ export default function Home() {
         patient.kvr + "\n" +
         patient.street + " " + patient.houseNumber + " " + patient.postalCode + " " + patient.city + "\n" +
         patient.phone + "\n" + patient.email + "\n" + (new Date(patient.birthday)).toLocaleDateString("de-DE") + "\n" +
-        (patient.emergencyContact == null ? "" : ("Notfallkontakt: " + patient.emergencyContact?.name + " " + patient.emergencyContact?.phone + "\n"));
-      );
+        (patient.emergencyContact == null ? "" : ("Notfallkontakt: " + patient.emergencyContact?.name + " " + patient.emergencyContact?.phone + "\n")));
     });
+ 
 
     getDrugs(patientID).then((drugs) => {
       var drugString = "";
@@ -39,14 +39,14 @@ export default function Home() {
       setDrugs(drugString);
     });
 
-    getReports(patientID,).then((reports) => {
+    getReports(patientID).then((reports) => {
       var reportString = "";
       reports.forEach((report) => {
         reportString += report.diagnosis.illness + " - " + report.findings + "\n";
       });
       setReports(reportString);
     });
-  }, [patientID]);
+  }, []);
 
 
   if (!Account.loggedIn) {
@@ -74,7 +74,7 @@ export default function Home() {
     console.log(content)
   };
 
-  const handleCardClick = (path) => {
+  const handleCardClick = (path: string) => {
     window.location.href = `${path}?patientId=${patientID}`;
   };
 
