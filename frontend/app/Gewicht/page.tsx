@@ -9,8 +9,8 @@ export default function Home(){
   return (
     <main className="main-grid grid min-h-screen">
       <HeaderNav/>
-      <SideNav />
-      <div>
+      <SideNav activeID={5}/>
+      <div className="bg-white w-[88vw]">
         <GraphWindow initialTab="Gewicht"/>
         <div>
           <CustomGraph/>

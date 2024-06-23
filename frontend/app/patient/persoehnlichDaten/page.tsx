@@ -262,15 +262,24 @@ export default function Home() {
                     </div>
                 </form>
             </div>
-            <button className="absolute bottom-5 right-5 bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+            <button className="absolute bottom-5 right-5 bg-white hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
                 type="button"
                 onClick={async () => {
                     await updatePatient(d);
                     await updateEmergencyContact(d.id!, e);
-                    window.location.href = "/";
+                    window.location.href = "./login";
                 }}
             >
                 Speichern
+            </button>
+            <button className="absolute bottom-5 left-[12vw] ml-4 hover:bg-[var(--primary)] text-[var(--primary)] bg-white font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+                type="button"
+                onClick={async () => {
+                    localStorage.clear();
+                    window.location.href = "/login";
+                }}
+            >
+                Abmelden
             </button>
         </main>
     );
