@@ -2,6 +2,7 @@ import API_CONFIG from "./api_config";
 
 class Doctor {
     id?: number;
+    doctorId?: number;
     name: string;
     surname: string;
     speciality: string;
@@ -27,6 +28,7 @@ class Doctor {
         city :string;
     }) {
         this.id = json.doctorId;
+        this.doctorId = json.doctorId;
         this.name = json.name;
         this.surname = json.surname;
         this.speciality = json.speciality;
@@ -41,6 +43,7 @@ class Doctor {
     toJson(): Object {
         return {
             id: this.id,
+            doctorId: this.doctorId,
             name: this.name,
             speciality: this.speciality,
             email: this.email,

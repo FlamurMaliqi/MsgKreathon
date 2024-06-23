@@ -38,9 +38,9 @@ export default function Home() {
         const l = new Vaccination({
             id: undefined,
             vaccineName: "",
-            vaccinationDate: new Date(),
+            vaccinationDate: (new Date()).toDateString(),
             administeringDoctor: {
-                id: account.userId,
+                doctorId: account.userId,
                 name: "",
                 surname: "",
                 email: "",
@@ -53,7 +53,7 @@ export default function Home() {
             },
             patientId: patientId,
             dose: "",
-            notificationDate: new Date(),
+            notificationDate: (new Date().toDateString()),
         });
         setD(l);
     }
@@ -93,21 +93,6 @@ export default function Home() {
 
                         <div className="px-3">
                             <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
-                                Impfdatum
-                            </label>
-                            <JsonConnectedDatePicker
-                                className="appearance-none block bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                                json={d}
-                                jsonPath="vaccinationDate"
-                                displayName="Impfdatum"
-                                updateFunction={() => {
-                                }}
-                            />
-
-                        </div>
-
-                        <div className="px-3">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
                                 Benachrichtigungsdatum
                             </label>
                             <JsonConnectedDatePicker
@@ -132,7 +117,7 @@ export default function Home() {
                     type="button"
                     onClick={async () => {
                         await createVaccination(patientId, d);
-                        window.location.href = "/";
+                        window.location.href = `/Impfungen?patientId=${patientId}`;
                     }}
                     >
                     Speichern

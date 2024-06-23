@@ -32,7 +32,7 @@ class Diagnosis {
         return {
             id: this.id,
             patient: { patientId: this.patientId },
-            issuedBy: this.issuedBy,
+            issuedBy: {doctorId: this.issuedBy.id},
             illness: this.illness,
             description: this.description,
             severity: this.severity,
@@ -58,6 +58,7 @@ const getDiagnoses = async (patientId: number): Promise<Diagnosis[]> => {
 
 const createDiagnosis = async (patientId: number, data: Diagnosis): Promise<Diagnosis> => {
     const diagnosesUrl = API_CONFIG.getDiagnosesURL(patientId);
+    console.log(data.toJson());
     const js = await API_CONFIG.sendRequest(diagnosesUrl, 'POST', data.toJson());
     return new Diagnosis(js);
 }

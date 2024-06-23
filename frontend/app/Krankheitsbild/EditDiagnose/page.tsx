@@ -45,7 +45,7 @@ export default function Home() {
             dateDiagnosed: (new Date()).toDateString(),
             severity: "",
             description: "",
-            issuedBy: new Doctor({
+            issuedBy: {
                 doctorId: account.userId,
                 name: "",
                 surname: "",
@@ -56,7 +56,7 @@ export default function Home() {
                 houseNumber: "",
                 postalCode: "",
                 city: "",
-            }),
+            },
 
         });
 
@@ -134,7 +134,7 @@ export default function Home() {
                 type="button"
                 onClick={async () => {
                     await createDiagnosis(patientId, d);
-                    // window.location.href = "/?patientId=" + patientId;
+                    window.location.href = "/?patientId=" + patientId;
                 }}
                 >
                 Speichern

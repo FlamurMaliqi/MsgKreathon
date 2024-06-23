@@ -30,6 +30,7 @@ const JsonConnectedSelect = ({ json, jsonPath, displayName, updateFunction, clas
     if (value == undefined) {
         // Set value to first key in selectables
         setValue(Object.keys(selectables)[0]);
+        json[jsonPath] = Object.keys(selectables)[0];
     }
 
     return (

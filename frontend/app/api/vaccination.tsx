@@ -4,7 +4,7 @@ import { Doctor } from './doctor';
 class Vaccination {
     id?: number;
     patientId: number;
-    administeringDoctor: Doctor;
+    administeringDoctor: any;
     vaccineName: string;
     vaccinationDate: Date;
     notificationDate: Date;
@@ -32,7 +32,9 @@ class Vaccination {
         return {
             id: this.id,
             patientId: this.patientId,
-            administeringDoctor: this.administeringDoctor.id,
+            administeringDoctor: {
+                doctorId: this.administeringDoctor.id
+            },
             vaccineName: this.vaccineName,
             vaccinationDate: this.vaccinationDate,
             notificationDate: this.notificationDate,
