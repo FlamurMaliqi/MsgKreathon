@@ -16,7 +16,7 @@ class Allergy {
         allergen: string;
         reaction: string;
         severity: string;
-        dateDiagnosed: Date;
+        dateDiagnosed: string;
         notes: string;
     }) {
         this.id = json.id;
@@ -37,7 +37,7 @@ class Allergy {
             allergen: this.allergen,
             reaction: this.reaction,
             severity: this.severity,
-            dateDiagnosed: `${this.dateDiagnosed.getFullYear()},${this.dateDiagnosed.getMonth() + 1},${this.dateDiagnosed.getDate()}`,
+            dateDiagnosed: this.dateDiagnosed,
 
             notes: this.notes,
         };

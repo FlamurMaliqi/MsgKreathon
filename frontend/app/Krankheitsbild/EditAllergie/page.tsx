@@ -26,7 +26,7 @@ export default function Home() {
             allergen: "",
             patientId: patientId,
             reaction: "",
-            dateDiagnosed: new Date(),
+            dateDiagnosed: (new Date()).toLocaleDateString("de-DE"),
             severity: "",
             notes: "",
         });
@@ -56,9 +56,22 @@ export default function Home() {
     return (
         <div className="content overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
             <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
-                <h3>Impfungsinformationen </h3>
+                <h3>Allergieinformationen </h3>
                 
                 <div className="flex flex-wrap -mx-3 mb-6">
+
+                    <div className="w-full px-3">
+                        <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
+                            Allergen
+                        </label>
+                        <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
+                            json={d}
+                            jsonPath="allergen"
+                            displayName="Allergen"
+                            updateFunction={() => {
+                            }}
+                        />
+                    </div>
 
                     <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
@@ -94,20 +107,6 @@ export default function Home() {
                             json={d}
                             jsonPath="notes"
                             displayName="Notizen"
-                            updateFunction={() => {
-                            }}
-                        />
-                    </div>
-
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
-                            Diagnosedatum
-                        </label>
-                        <JsonConnectedDatePicker
-                            className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                            json={d}
-                            jsonPath="dateDiagnosed"
-                            displayName="Diagnosedatum"
                             updateFunction={() => {
                             }}
                         />
