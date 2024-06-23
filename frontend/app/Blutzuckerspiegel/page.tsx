@@ -9,7 +9,7 @@ export default function Home(){
   return (
     <main className="main-grid grid min-h-screen">
       <HeaderNav />
-      <SideNav />
+      <SideNav activeID={5}/>
       <div>
         <GraphWindow initialTab="Blutzucker"/>
         <div>
