@@ -54,8 +54,8 @@ const Medikante: React.FC = () => {
                 {medikamente.length === 0 ? (
                     <div className="flex items-start justify-center h-full w-full">
                     <div className="text-center">
-                        <h2 className="text-2xl font-semibold">Keine Medikamente verfügbar</h2>
-                            <p className="text-gray-700">Es sind derzeit keine Medikamente vorhanden. Bitte versuchen Sie es später erneut oder wenden Sie sich an Ihren Arzt.</p>
+                        <h2 className="text-2xl font-semibold">Keine Medikamente registriert</h2>
+                            <p className="text-gray-700">Es sind derzeit keine Medikamente registriert. Bitte versuchen Sie es später erneut oder wenden Sie sich an Ihren Arzt.</p>
                         </div>
                     </div>
                 ) : (

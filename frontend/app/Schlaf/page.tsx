@@ -10,7 +10,7 @@ export default function Home(){
     <main className="main-grid grid min-h-screen">
       <HeaderNav/>
       <SideNav activeID={5}/>
-      <div>
+      <div className="bg-white w-[88vw]">
         <GraphWindow initialTab="Schlaf"/>
         <div>
           <CustomGraph/>

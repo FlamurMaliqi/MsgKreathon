@@ -64,7 +64,7 @@ const CustomGraph = ({ json, xAxisPath, y1AxisPath, y2AxisPath, title, columns, 
         <Chart
           chartType="LineChart"
           width="100%"
-          height="400px"
+          height="80vh"
           data={[columns, ...data]}
           chartLanguage="de"
           options={{
