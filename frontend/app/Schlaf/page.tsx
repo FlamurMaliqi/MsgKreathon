@@ -1,18 +1,17 @@
 'use client'
 import React from 'react';
-import CustomGraph from '../components/BluthochdruckGraph';
+import CustomGraph from '../components/SchlafGraph';
 import HeaderNav from '../components/HeaderNav';
 import SideNav from '../components/SideNav';
 import GraphWindow from '../components/graph-window';
 
 export default function Home(){
-
   return (
     <main className="main-grid grid min-h-screen">
-      <HeaderNav />
+      <HeaderNav/>
       <SideNav />
       <div>
-        <GraphWindow initialTab="Bluthochdruck" />
+        <GraphWindow initialTab="Schlaf"/>
         <div>
           <CustomGraph/>
         </div>

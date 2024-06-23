@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Chart } from "react-google-charts";
 
-
   
 // Todo: Needs to be designed!
 const CustomGraph = ({ json, xAxisPath, yAxisPath, title, columns, useAfterItem} : {
@@ -70,7 +69,7 @@ const CustomGraph = ({ json, xAxisPath, yAxisPath, title, columns, useAfterItem}
             />
         }
 
-        {!useAfterItem ? <div> </div> :
+        {/* {!useAfterItem ? <div> </div> :
         <div>
             
             {dateSetterButton(7)}
@@ -83,7 +82,7 @@ const CustomGraph = ({ json, xAxisPath, yAxisPath, title, columns, useAfterItem}
 
             {dateSetterButton(undefined)}
 
-        </div>}
+        </div> */}
         
 
         </div>
