@@ -9,6 +9,7 @@ import { Diagnosis, getDiagnoses } from "../api/diagnosis";
 import AddDialog from "../components/AddDialog";
 import { IoAddSharp } from "react-icons/io5";
 import account from "../api/account";
+import enums from "../api/enums";
 
 export default function Home(this: any) {
 
@@ -42,11 +43,11 @@ export default function Home(this: any) {
       <div className="content h-[92vh] overflow-scroll p-4 w-[88vw]">
         <h3 className="headline text-[var(--onTritary)] leading-none">Allergien</h3>
         <AccordionElement 
-          labels={allergies.map((allergy) => allergy.allergen)}
+          labels={allergies.map((allergy) =>  enums.PossibleAllergens[allergy.allergen])}
           values={allergies.map((allergy) => 
-            allergy.allergen + "\n" + 
+            enums.PossibleAllergens[allergy.allergen] + "\n" + 
             allergy.reaction + "\n" + 
-            allergy.severity + "\n" + 
+            enums.PossibleSeverities[allergy.severity] + "\n" + 
             new Date(allergy.dateDiagnosed).toLocaleDateString("de-De") + "\n" + 
             allergy.notes
           )}

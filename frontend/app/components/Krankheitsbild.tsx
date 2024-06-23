@@ -2,6 +2,7 @@ import { Diagnosis } from '../api/diagnosis';
 import Card from './Card';
 import DialogComponent from "../components/Dialog";
 import { useState } from 'react';
+import enums from '../api/enums';
 
 export default function Krankheitsbild({diagnoses}:{diagnoses: Diagnosis[]}) {
     const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ export default function Krankheitsbild({diagnoses}:{diagnoses: Diagnosis[]}) {
         setDialogContent(
             diagnosis.illness + "\n" +
             "Diagnose von: " + diagnosis.issuedBy.name + "\n" +
-            "Schweregrad: " + diagnosis.severity + "\n" +
+            "Schweregrad: " + enums.PossibleSeverities[diagnosis.severity] + "\n" +
             "Diagnose am: " + new Date(diagnosis.dateDiagnosed).toLocaleDateString('de-DE') + "\n" +
             diagnosis.description
         );
@@ -39,7 +40,7 @@ export default function Krankheitsbild({diagnoses}:{diagnoses: Diagnosis[]}) {
                         title={diagnosis.illness} 
                         text={
                             "Diagnose von: " + diagnosis.issuedBy.name + " " + diagnosis.issuedBy.surname + "\n" +
-                            "Schweregrad: " + diagnosis.severity + "\n" +
+                            "Schweregrad: " + enums.PossibleSeverities[diagnosis.severity] + "\n" +
                             "Diagnose am: " + new Date(diagnosis.dateDiagnosed).toLocaleDateString('de-DE') + "\n" +
 
                             diagnosis.description
