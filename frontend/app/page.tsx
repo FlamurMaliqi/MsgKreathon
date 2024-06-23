@@ -12,6 +12,7 @@ import account from './api/account';
 import { getDrugs } from "./api/drug";
 import { getReport, getReports } from "./api/report";
 import { Allergy, getAllergies } from "./api/allergy";
+import { getEmergencyContact } from "./api/ermergency";
 
 // dashboard
 export default function Home() {
@@ -28,13 +29,22 @@ export default function Home() {
     patientID = parseInt(urlParams.get('patientId') || "-1");
   }
   useEffect(() => {
-    getPatient(patientID).then((patient) => {
+    getPatient(patientID).then(async (patient) => {
+      await getEmergencyContact(patient.id!).then((emergencyContact) => {
+        if (emergencyContact != null){
+          patient.emergencyContact = emergencyContact;
+        }
+      });
       setPersonalData(
         patient.name + " " + patient.surname + "\n" +
         patient.kvr + "\n" +
         patient.street + " " + patient.houseNumber + " " + patient.postalCode + " " + patient.city + "\n" +
         patient.phone + "\n" + patient.email + "\n" + (new Date(patient.birthday)).toLocaleDateString("de-DE") + "\n" +
-        (patient.emergencyContact == null ? "" : ("Notfallkontakt: " + patient.emergencyContact?.name + " " + patient.emergencyContact?.phone + "\n")));
+        
+        (patient.emergencyContact == null ? "" : (
+            "Notfallkontakt: " + patient.emergencyContact?.name + "\n" + 
+            patient.emergencyContact?.phone + "\n"
+        )));
     });
  
 
@@ -43,6 +53,9 @@ export default function Home() {
       drugs.forEach((drug) => {
         drugString += drug.name + " - " + drug.dosage + "\n";
       });
+      if (drugString == ""){
+        drugString = "Keine Medikamente vorhanden";
+      }
       setDrugs(drugString);
     });
 
@@ -51,6 +64,9 @@ export default function Home() {
       reports.forEach((report) => {
         reportString += report.diagnosis.illness + " - " + report.findings + "\n";
       });
+      if (reportString == ""){
+        reportString = "Keine Befunde vorhanden";
+      }
       setReports(reportString);
     });
   }, []);
