@@ -18,10 +18,11 @@ export default function Home(this: any) {
 
   const urlParams = new URLSearchParams(window.location.search)
   const patientId = parseInt(urlParams.get('patientId') || "1");
-    useEffect(() => {
-      getAllergies(patientId).then((allergies) => setAllergies(allergies));
-      getDiagnoses(patientId).then((diagnoses) => setDiagnoses(diagnoses));
-    }, []);
+  
+  useEffect(() => {
+    getAllergies(patientId).then((allergies) => setAllergies(allergies));
+    getDiagnoses(patientId).then((diagnoses) => setDiagnoses(diagnoses));
+  }, []);
 
   
     if (allergies.length == 0) {

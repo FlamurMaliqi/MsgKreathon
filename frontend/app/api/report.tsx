@@ -15,7 +15,7 @@ class Report {
         diagnosis: any;
         findings: string;
         recommendations: string;
-        date: Date;
+        date: string;
         reportType: string;
     }) {
         this.id = json.id;
@@ -23,7 +23,7 @@ class Report {
         this.diagnosis = new Diagnosis(json.diagnosis);
         this.findings = json.findings;
         this.recommendations = json.recommendations;
-        this.date = json.date;
+        this.date = new Date(json.date);
         this.reportType = json.reportType;
     }
 
@@ -49,6 +49,7 @@ const getReport = async (patientId: number, diagnosisId: number): Promise<Report
 const getReports= async (patientId: number): Promise<Report[]> => {
     const diagnosisURL = API_CONFIG.getReportsURL(patientId);
     const js = await API_CONFIG.sendRequest(diagnosisURL , 'GET', "");
+    if (js=="") { return []; }
     return js.map((item: any) => new Report(item));
 }
 

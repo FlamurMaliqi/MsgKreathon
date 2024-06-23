@@ -15,16 +15,16 @@ class Vaccination {
         patientId: number;
         administeringDoctor: any;
         vaccineName: string;
-        vaccinationDate : Date;
-        notificationDate: Date;
+        vaccinationDate : string;
+        notificationDate: string;
         dose: string;
     }) {
         this.id = json.id;
         this.patientId = json.patientId;
         this.administeringDoctor = new Doctor(json.administeringDoctor);
         this.vaccineName = json.vaccineName;
-        this.vaccinationDate = json.vaccinationDate;
-        this.notificationDate = json.notificationDate;
+        this.vaccinationDate = new Date(json.vaccinationDate);
+        this.notificationDate = new Date(json.notificationDate);
         this.dose = json.dose;
     }
 
@@ -49,7 +49,9 @@ const getVaccination = async (patientId: number, vaccinationId: number): Promise
 
 const getVaccinations = async (patientId: number): Promise<Vaccination[]> => {
     const vaccinationsURL = API_CONFIG.getVaccinationsURL(patientId);
-    const js = await API_CONFIG.sendRequest(vaccinationsURL + "/all", 'GET', "");
+    const js = await API_CONFIG.sendRequest(vaccinationsURL, 'GET', "");
+    if (js == "") { return []}
+    console.log(js)
     return js.map((item: any) => new Vaccination(item));
 }
 

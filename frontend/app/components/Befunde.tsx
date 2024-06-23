@@ -3,7 +3,7 @@ import { TreeTable } from 'primereact/treetable';
 import { Column } from 'primereact/column';
 import DialogComponent from "../components/Dialog";
 import { Diagnosis } from '../api/diagnosis';
-import { Report } from '../api/report';
+import { Report, getReports } from '../api/report';
 import { report } from 'process';
 
 export default function Befunde() {
@@ -30,53 +30,34 @@ export default function Befunde() {
         );
     };
 
+    const urlParams = new URLSearchParams(window.location.search)
+    const patientId = parseInt(urlParams.get('patientId') || "1");
+
     useEffect(() => {
         // Dummy-Daten aktualisieren
-        const data = [
-            new Report({
-                id: 1,
-                patientId: 1,
-                date: new Date(),
-                diagnosis: new Diagnosis({
-                    id: 1,
-                    patientId: 1,
-                    issuedBy: {
-                      id: 1,
-                      name: "Dr. Mustermann",
-                      address: "Musterstraße 1",
-                      phone: "0123456789",
-                      email: " ",
-                      speciality: "Allgemeinmedizin"
+        getReports(patientId).then((data) => {
+            const d = data.map((item, index) => {
+                return {
+                    key: index,
+                    data: {
+                        datum: item.date.toLocaleDateString("de-DE"),
+                        typ: item.reportType,
+                        diagnose: item.diagnosis.illness,
+                        arzt: item.diagnosis.issuedBy.name,
+                        note: item.findings,
+                        diagnosis: item.diagnosis
                     },
-                    illness: "Diabetis",
-                    description: "Husten seit 3 Wochen",
-                    severity: "Mittel",
-                    dateDiagnosed: new Date()
-                }),
-                findings: "Husten seit 3 Wochen",
-                recommendations: "Viel trinken",
-                reportType: "Arztbrief",
-            }),
-        ];
+                    report: item
+                }
+            });
+            setNodes(d);
+        })
         
-        const d = data.map((item, index) => {
-            return {
-                key: index,
-                data: {
-                    datum: item.date.toLocaleDateString("de-DE"),
-                    typ: item.reportType,
-                    diagnose: item.diagnosis.illness,
-                    arzt: item.diagnosis.issuedBy.name,
-                    note: item.findings,
-                    diagnosis: item.diagnosis
-                },
-                report: item
-            }
-        });
+
         
 
 
-        setNodes(d);
+
     }, []);
 
     return (
