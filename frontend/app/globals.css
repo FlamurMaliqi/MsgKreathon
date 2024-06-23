@@ -156,6 +156,16 @@ aside ul li a:hover:after{
   border-radius: 75px;
 }
 
+.side-nav-item.active li:hover {
+  color: var(--onPrimary);
+  background-color: var(--sideNav);
+  padding: 0.5rem;
+  border-spacing: 3px;
+  border: var(--sideNav) solid 5px;
+  border-radius: 150px;
+}
+
+
 .side-nav-item.active .side-nav-link {
   color: var(--onPrimary);
 }

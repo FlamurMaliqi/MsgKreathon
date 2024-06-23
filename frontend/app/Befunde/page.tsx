@@ -5,6 +5,7 @@ import SideNav from "../components/SideNav";
 import AddDialog from "../components/AddDialog";
 import { useState } from "react";
 import { IoAddSharp } from "react-icons/io5";
+import account from '../api/account';
 
 export
 default function Home() {
@@ -22,7 +23,7 @@ default function Home() {
         <div className="p-4 w-[88vw]">
             <Befunde/>
         </div>
-        <span className="absolute z-40 right-4 bottom-4"><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
+        <span className={account.isDoctor ? "absolute z-40 right-4 bottom-4" : "hidden"}><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
         
         <AddDialog openToggle={open} setOpen={setOpen} title={"Update"} data={"Langer Kontnet"} />
     </main>

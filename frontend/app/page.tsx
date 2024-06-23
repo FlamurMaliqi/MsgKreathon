@@ -8,6 +8,7 @@ import { Patient, getPatient } from "./api/patient";
 import { Doctor, getDoctor } from "./api/doctor";
 import { IoAddSharp } from "react-icons/io5";
 import AddDialog from "./components/AddDialog";
+import account from './api/account';
 
 // dashboard
 export default function Home() {
@@ -62,7 +63,7 @@ export default function Home() {
         <Card className="dashboard-area-c" title="Medikamente"/>
         <Card className="dashboard-area-d" title="Befunde"/>
       </div>
-      <span className="absolute z-40 right-4 bottom-4"><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
+      <span className={account.isDoctor ? "absolute z-40 right-4 bottom-4" : "hidden"}><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
 
       <AddDialog openToggle={open} setOpen={setOpen} title={"Update"} data={"Langer Kontnet"} />
     

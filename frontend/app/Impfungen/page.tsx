@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Vaccination, getVaccinations } from "../api/vaccination";
 import AddDialog from "../components/AddDialog";
 import { IoAddSharp } from "react-icons/io5";
+import account from '../api/account';
 
 export
  default function Home() {
@@ -55,7 +56,7 @@ export
   return (
      <main className="main-grid grid content-center" >
         
-        <HeaderNav></HeaderNav>
+        <HeaderNav/>
         <SideNav activeID={4}/>
         <div className="p-4 w-[88vw]">
             <TreeTable
@@ -72,7 +73,7 @@ export
             };
           })} onRowClick={undefined}            />
         </div>
-        <span className="absolute z-40 right-4 bottom-4"><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
+        <span className={account.isDoctor ? "absolute z-40 right-4 bottom-4" : "hidden"}><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
         <AddDialog openToggle={open} setOpen={setOpen} title={"Update"} data={"Langer Kontnet"} />
 
     </main>

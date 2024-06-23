@@ -8,6 +8,7 @@ import { Allergy, getAllergies } from "../api/allergy";
 import { Diagnosis, getDiagnoses } from "../api/diagnosis";
 import AddDialog from "../components/AddDialog";
 import { IoAddSharp } from "react-icons/io5";
+import account from "../api/account";
 
 export default function Home(this: any) {
 
@@ -26,7 +27,7 @@ export default function Home(this: any) {
 
   
     if (allergies.length == 0) {
-      return <div>Loading...</div>;
+      return <div>Keine Allergien registriert</div>;
     }
 
 
@@ -56,7 +57,7 @@ export default function Home(this: any) {
           diagnoses={diagnoses}
         />
       </div>
-      <span className="absolute z-40 right-4 bottom-4"><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
+      <span className={account.isDoctor ? "absolute z-40 right-4 bottom-4" : "hidden"}><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
       <AddDialog openToggle={open} setOpen={setOpen} title={"Update"} data={"Langer Kontnet"} />
 
     </main>
