@@ -4,8 +4,8 @@ import { Card } from 'primereact/card';
 import {motion} from 'framer-motion';
 
 export default function CardElement({
-    title = "Title", 
-    text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!", 
+    title = "", 
+    text = "",
     className = "",
     onClick = () => {}
     } : {
@@ -27,7 +27,7 @@ export default function CardElement({
             onClick={onClick}
         >
             <Card className="headline" title={title}>
-                <p className="text m-0 opacity-90" >
+                <p className="text m-0 opacity-90">
                     {text.split("\n").map((item: any, key: any) => {
                         return <span key={key}>{item}<br/></span>
                     })}

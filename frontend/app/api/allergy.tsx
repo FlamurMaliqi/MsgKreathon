@@ -53,6 +53,9 @@ const getAllergy = async (patientId: number, vaccinationId: number): Promise<All
 const getAllergies = async (patientId: number): Promise<Allergy[]> => {
     const allergiesUrl = API_CONFIG.getAllergiesURL(patientId);
     const js = await API_CONFIG.sendRequest(allergiesUrl + "/all", 'GET', "");
+    if (!Array.isArray(js)) {
+        return [];
+    }
     return js.map((item: any) => new Allergy(item));
 }
 
