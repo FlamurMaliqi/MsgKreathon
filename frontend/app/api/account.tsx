@@ -17,7 +17,7 @@ const account = {
                 if (!doctor) {
                     return;
                 }
-                localStorage.setItem('userName', doctor.name);
+                localStorage.setItem('userName', doctor.name + ' ' + doctor.surname);
             });
         } else {
             await getPatient(userId).catch(() => {
