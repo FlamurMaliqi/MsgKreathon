@@ -206,7 +206,7 @@ export default function Home() {
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
-                                jsonPath="postalcode"
+                                jsonPath="postalCode"
                                 displayName="PLZ"
                                 updateFunction={() => {
                                     console.log(d.name)
@@ -223,7 +223,7 @@ export default function Home() {
                                 Vorname
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="name"
                                 displayName="Vorname"
                                 updateFunction={() => {
@@ -235,7 +235,7 @@ export default function Home() {
                                 Nachname
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="surname"
                                 displayName="Nachname"
                                 updateFunction={() => {
@@ -249,7 +249,7 @@ export default function Home() {
                                 Telefonnummer
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="phone"
                                 displayName="telefonnummer"
                                 updateFunction={() => {
@@ -263,7 +263,7 @@ export default function Home() {
                                 Beziehung
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="relationship"
                                 displayName="Beziehung"
                                 updateFunction={() => {
@@ -289,11 +289,12 @@ export default function Home() {
             {account.loggedIn && !account.isDoctor && (
             <button className="absolute bottom-5 left-[12vw] ml-4 hover:bg-[var(--primary)] text-[var(--primary)] bg-white font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
                 type="button"
-                onClick={async () => {
-                    localStorage.clear();
-                    window.location.href = "/login";
-                }}
-            >
+                onClick={
+                    async () => {
+                        localStorage.clear();
+                        window.location.href = "/login";
+                    }}
+                >
                 Abmelden
             </button>
             )}

@@ -73,15 +73,20 @@ export default function Home() {
       console.log(content)
   };
 
+  const handleCardClick = (path) => {
+    window.location.href = `${path}?patientId=${patientID}`;
+  };
+
   return (
     <main className="main-grid grid min-h-screen">
       <HeaderNav/>
       <SideNav activeID={0}/>
       <div className="content dashboard-grid h-[92vh] overflow-scroll p-4 grid gap-4">
-        <Card className="dashboard-area-a" title="Persöhnliche Daten" text={personalData}/>
-        <Card className="dashboard-area-b" title="Termine"/>
-        <Card className="dashboard-area-c" title="Medikamente" text={drugs}/>
-        <Card className="dashboard-area-d" title="Befunde" text={reports}/>
+        <Card onClick={() => handleCardClick('/persoehnlicheDaten')} className="dashboard-area-a" title="Persöhnliche Daten" text={personalData} />
+        <Card onClick={() => handleCardClick('/Kalender')} className="dashboard-area-b" title="Termine" />
+        <Card onClick={() => handleCardClick('/Medikamente')} className="dashboard-area-c" title="Medikamente" text={drugs} />
+        <Card onClick={() => handleCardClick('/Befunde')} className="dashboard-area-d" title="Befunde" text={reports} />
+
       </div>
       <span className={account.isDoctor ? "absolute z-40 right-4 bottom-4" : "hidden"}><IoAddSharp size={50} className="bg-black rounded-[100px] text-white hover:text-[var(--tritary)] hover:bg-[var(--primary)]" onClick={() => handleToggleDialog()}/></span>
 
