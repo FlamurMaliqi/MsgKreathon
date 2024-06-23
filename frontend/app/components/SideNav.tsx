@@ -12,9 +12,7 @@ const SideNav = ({activeID}: {activeID: number}) => {
         // get patientId from URL
         const urlParams = new URLSearchParams(window.location.search);
         patientID = parseInt(urlParams.get('patientId') || "-1");
-        if (patientID === -1) {
-            alert("No patientId provided in URL");
-        }
+       
     }
 
     const navItems = [

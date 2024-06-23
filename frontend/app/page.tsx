@@ -59,7 +59,6 @@ export default function Home() {
     patientID = parseInt(urlParams.get('patientId') || "-1");
     if (patientID == -1) {
       window.location.href = '/choosePatient';
-      alert("No patientId provided in URL");
     }
   }
   const [open, setOpen] = useState(false);
