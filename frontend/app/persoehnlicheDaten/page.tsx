@@ -11,23 +11,28 @@ export default function Home() {
     const [d, setD] = useState(null as unknown as Patient);
     const [e, setE] = useState(null as unknown as EmergencyContact);
 
+    const urlParams = new URLSearchParams(window.location.search)
+    const patientId = parseInt(urlParams.get('patientId') || "-1");
+
     useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search)
-        const patientId = parseInt(urlParams.get('patientId') || "1");
+
 
         getPatient(patientId).then((patient) => {
             setD(patient);
         });
         getEmergencyContact(patientId).then((emergencyContact) => {
-            setE(emergencyContact);
+            console.log(emergencyContact);
+            if (emergencyContact.id != undefined) {
+                setE(emergencyContact);
+            }
+            
         });
 
     }, []);
     
-    const urlParams = new URLSearchParams(window.location.search)
-    const patientId = parseInt(urlParams.get('patientId') || "1");
 
-    if (!d || !e) {
+
+    if (!d) {
         return <div>Loading...</div>;
     }
 
@@ -215,6 +220,7 @@ export default function Home() {
                     </div>
                 </form>
 
+                { e && (        
                 <form className="w-full bg-[var(--secondary)] p-4 h-fit rounded">
                     <h3 className="headline mb-4">Notfallkontakt</h3>
                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -272,14 +278,18 @@ export default function Home() {
                         </div>
                     </div>
                 </form>
+                )}
             </div>
+            
 
             {account.loggedIn && !account.isDoctor && (
                 <button className="absolute bottom-5 right-5 bg-white hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
                     type="button"
                     onClick={async () => {
                         await updatePatient(d);
-                        await updateEmergencyContact(d.id!, e);
+                        if (e.id != undefined) {
+                            await updateEmergencyContact(e.id, e);
+                        }
                         window.location.href = "/?patientId=" + patientId;
                     }}
                 >

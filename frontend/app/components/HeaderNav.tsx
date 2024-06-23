@@ -7,7 +7,11 @@ import account from '../api/account';
 export default function HeaderNav() {
      
     const urlParams = new URLSearchParams(window.location.search)
-    const patientId = parseInt(urlParams.get('patientId') || "1");
+    var patientId = parseInt(urlParams.get('patientId') || "-1");
+
+    if (patientId == -1 && !Account.isDoctor) {
+        patientId = Account.userId;
+    }
 
     const items = [
         {
