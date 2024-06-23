@@ -18,7 +18,7 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
         setOpen(openToggle);
     }, [openToggle, setOpen]);
 
-    const [mode, setMode] = useState("Impfungen");
+    const [mode, setMode] = useState("Diagnose");
 
     const renderContent = () => {
         switch (mode) {
@@ -58,9 +58,9 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                                     <a href="#" onClick={() => setMode("Diagnose")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Diagnose</a>
                                     <a href="#" onClick={() => setMode("Impfungen")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Impfungen</a>
                                     <a href="#" onClick={() => setMode("Allergie")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Allergie</a>
-                                    <a href="#" onClick={() => setMode("PatientWechseln")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded w-max">Partient wechseln</a>
                                     {/* <a href="#" onClick={() => setMode("Termin")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Termin</a> */}
                                     <a href="#" onClick={() => setMode("Benachrichtigung")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded">Benachrichtigung</a>
+                                    <a href="#" onClick={() => setMode("PatientWechseln")} className="text-[var(--onPrimary)] bg-[var(--onTritary)] hover:bg-[var(--primary)] p-2 rounded w-max">Partient wechseln</a>
                                 </nav>
                             </div>
                             

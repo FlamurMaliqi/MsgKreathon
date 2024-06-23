@@ -64,13 +64,11 @@ export default function Home() {
 
     }
 
-
-
     return (
  
         <div className="content overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
             <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
-                <h3> Diagnoseinfos </h3>
+                <h3 className="headline"> Diagnoseinfos </h3>
                 
                 <div className="flex flex-wrap -mx-3 mb-6">
 
