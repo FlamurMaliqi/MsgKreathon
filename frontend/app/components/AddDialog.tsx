@@ -27,8 +27,8 @@ export default function DialogComponent({ openToggle, setOpen, title, data }: Di
                 return <EditImpfungen />;
             case "Allergie":
                 return <EditAllergie />;
-            case "Termin":
-                return "<EditTermin />";
+            // case "Termin":
+            //     return "<EditTermin />";
             default:
                 return null;
         }

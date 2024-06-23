@@ -32,7 +32,7 @@ class Vaccination {
         return {
             id: this.id,
             patientId: this.patientId,
-            administeringDoctor: this.administeringDoctor.toJson(),
+            administeringDoctor: this.administeringDoctor.id,
             vaccineName: this.vaccineName,
             vaccinationDate: this.vaccinationDate,
             notificationDate: this.notificationDate,
