@@ -42,13 +42,13 @@ export default function Home() {
     return (
         <main className="main-grid grid min-h-screen">
             <HeaderNav></HeaderNav>
-            <SideNav activeID={0} />
+            <SideNav activeID={42} />
             <div className="content h-[92vh] w-[88vw] overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
                 <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
-                    <h3>Persönliche Informationen</h3>
-                    <div className="flex flex-wrap -mx-3 mb-6">
-                        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-first-name">
+                    <h3 className="headline">Persönliche Informationen</h3>
+                    <div className="flex flex-wrap -mx-3 mb-4">
+                        <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-first-name">
                                 Vorname
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border-[var(--onTritary)] border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -61,7 +61,7 @@ export default function Home() {
                             </Input>
                         </div>
                         <div className="w-full md:w-1/2 px-3">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-last-name">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-last-name">
                                 Nachname
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
@@ -76,9 +76,9 @@ export default function Home() {
                
 
                     </div>
-                    <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-password">
                                 Email
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
@@ -90,9 +90,9 @@ export default function Home() {
                                 }}></Input>
                         </div>
                     </div>
-                    <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-password">
                                 Telefonnummer
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
@@ -105,9 +105,9 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-password">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-password">
                                 Spezialisierung
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
@@ -120,9 +120,9 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap -mx-3 mb-2">
-                        <div className="w-full md:w-2/3 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-city">
+                    <div className="flex flex-wrap -mx-3 mb-1">
+                        <div className="w-full md:w-2/3 px-3 mb-4 md:mb-0">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-city">
                                 Straße
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
@@ -134,8 +134,8 @@ export default function Home() {
                                 }}></Input>
                         </div>
 
-                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-zip">
+                        <div className="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-zip">
                                 Hausnummer
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
@@ -147,9 +147,9 @@ export default function Home() {
                                 }}></Input>
                         </div>
                     </div>
-                    <div className="flex flex-wrap -mx-3 mb-2">
-                        <div className="w-full md:w-2/3 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-city">
+                    <div className="flex flex-wrap -mx-3 mb-1">
+                        <div className="w-full md:w-2/3 px-3 mb-4 md:mb-0">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-city">
                                 Stadt
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
@@ -160,8 +160,8 @@ export default function Home() {
                                     console.log(d.name)
                                 }}></Input>
                         </div>
-                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-2" htmlFor="grid-zip">
+                        <div className="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                            <label className="block uppercase tracking-wide text-[var(--onTritary)] text-xs font-bold mb-1" htmlFor="grid-zip">
                                 Postleitzahl
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"

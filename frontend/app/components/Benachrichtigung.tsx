@@ -8,7 +8,7 @@ export default function Benachrichtigung() {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="p-6">
+    <div className="p-6 h-[60vh]">
         <h3 className="headline font-bold flex flex-row mb-4">Patienten benachrichtigen</h3>
         <input
             className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border-[var(--onTritary)] border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:ring-2 focus:ring-[var(--onTritary)] transition-all duration-300"

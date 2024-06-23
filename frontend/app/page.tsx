@@ -35,15 +35,18 @@ export default function Home() {
           patient.emergencyContact = emergencyContact;
         }
       });
+      console.log(patient.emergencyContact)
       setPersonalData(
-        patient.name + " " + patient.surname + "\n" +
-        patient.kvr + "\n" +
-        patient.street + " " + patient.houseNumber + " " + patient.postalCode + " " + patient.city + "\n" +
-        patient.phone + "\n" + patient.email + "\n" + (new Date(patient.birthday)).toLocaleDateString("de-DE") + "\n" +
+        "Name: " + patient.name + " " + patient.surname + "\n" +
+        "Krankenversicherungsnummer: " +patient.kvr + "\n" +
+        "Adresse: " + patient.street + " " + patient.houseNumber + " " + patient.postalCode + " " + patient.city + "\n" +
+        "Telefon: " + patient.phone + "\n" + 
+        "Email: " + patient.email + "\n" + 
+        "Geburtsdatum: " + (new Date(patient.birthday)).toLocaleDateString("de-DE") + "\n" +
         
-        (patient.emergencyContact == null ? "" : (
+        ((patient.emergencyContact == null || patient.emergencyContact.name == undefined) ? "" : (
             "Notfallkontakt: " + patient.emergencyContact?.name + "\n" + 
-            patient.emergencyContact?.phone + "\n"
+            "Notfallkontakttelefon: " + patient.emergencyContact?.phone + "\n"
         )));
     });
  
