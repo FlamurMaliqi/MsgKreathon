@@ -68,7 +68,7 @@ export default function Home(this: any) {
     <HeaderNav/>
     <SideNav activeID={2}/>
       <div className="content h-[92vh] overflow-scroll p-4 w-[88vw]">
-        <h3 className="headline text-[var(--onTritary)]">Allergien</h3>
+        <h3 className="headline text-[var(--onTritary)] leading-none">Allergien</h3>
         <AccordionElement 
           labels={allergies.map((allergy) => allergy.allergen)}
           values={allergies.map((allergy) => 
@@ -80,7 +80,7 @@ export default function Home(this: any) {
           )}
         />
 
-        <h3 className="headline text-[var(--onTritary)]">Krankheitsbild</h3>
+        <h3 className="headline text-[var(--onTritary)] pt-4 leading-none">Krankheitsbild</h3>
         <Krankheitsbild 
           diagnoses={diagnoses}
         />

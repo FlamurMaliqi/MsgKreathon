@@ -186,6 +186,10 @@ aside ul li a:hover:after{
   margin-right: 0.5rem;
 }
 
+.p-accordion-tab{
+  margin-bottom: 5px;
+}
+
 tr:not([data-pc-section="headerrow"]){
   opacity: 0.9;
 }
@@ -193,4 +197,27 @@ tr:not([data-pc-section="headerrow"]){
 tr:not([data-pc-section="headerrow"]):hover {
   opacity: 1;
   background: #ddddd3;
+}
+
+
+@media screen and (max-width: 1200px){
+  .responsiveDisplayNone{
+    display: none;
+  }
+
+  .side-nav-item.active {
+    color: var(--onPrimary);
+    background-color: var(--primary);
+    padding: 0.5rem;
+    border: var(--primary) solid 5px;
+    border-radius: 150px;
+  }
+
+  .responsivePersonalDataClass{
+    grid-template-columns: 1fr;
+  }
+
+  .responsivePersonalDataClass form{
+    margin-bottom: 10vh;
+  }
 }

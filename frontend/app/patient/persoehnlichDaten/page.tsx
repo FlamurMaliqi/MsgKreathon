@@ -90,8 +90,8 @@ export default function Home() {
     return (
         <main className="main-grid grid min-h-screen">
             <HeaderNav></HeaderNav>
-            <SideNav />
-            <div className="content h-[92vh] w-[88vw] overflow-y-scroll py-4 grid grid-cols-2 content-evenly justify-items-center">
+            <SideNav activeID={42}/>
+            <div className="responsivePersonalDataClasscontent h-[92vh] w-[88vw] overflow-y-scroll py-4 grid grid-cols-2 content-evenly justify-items-center">
                 <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
                     <h3 className="headline mb-4">Persönliche Informationen</h3>
                     <div className="flex flex-wrap -mx-3 mb-6">

@@ -33,7 +33,7 @@ const SideNav = ({activeID}: {activeID: number}) => {
                     <li key={index} className={`side-nav-item text-[var(--onSecondary)] ${activeID === index ? 'active' : ''}`}>
                         <a className="side-nav-link flex flex-row items-center" href={item.href}>
                             {item.icon}
-                            <span className="ml-2">{item.label}</span>
+                            <span className="ml-2 responsiveDisplayNone">{item.label}</span>
                         </a>
                     </li>
                 ))}
