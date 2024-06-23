@@ -32,6 +32,8 @@ export default function Home() {
 
     const urlParams = new URLSearchParams(window.location.search)
     const patientId = parseInt(urlParams.get('patientId') || "-1");
+
+    
     if (d == undefined) {
         const l = new Diagnosis({
             id: undefined,   

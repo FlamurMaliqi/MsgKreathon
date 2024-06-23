@@ -27,7 +27,7 @@ export default function Krankheitsbild({diagnoses}:{diagnoses: Diagnosis[]}) {
                     <Card 
                         title={diagnosis.illness} 
                         text={
-                            "Diagnose von: " + diagnosis.issuedBy.name + "\n" +
+                            "Diagnose von: " + diagnosis.issuedBy.name + " " + diagnosis.issuedBy.surname + "\n" +
                             "Schweregrad: " + diagnosis.severity + "\n" +
                             "Diagnose am: " + new Date(diagnosis.dateDiagnosed).toLocaleDateString('de-DE') + "\n" +
 

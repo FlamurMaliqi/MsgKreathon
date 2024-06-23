@@ -118,8 +118,12 @@ const sendRequest = async (url: string, method: string, body: any): Promise<any>
         body: body == "" ? undefined : JSON.stringify(body),
     })
     
+    try {
+        return await response.json()
+    } catch (e) {
+        return ""
+    }
     
-    return response.json();
 };
 
 export default {

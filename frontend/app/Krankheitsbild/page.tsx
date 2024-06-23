@@ -12,7 +12,7 @@ import { IoAddSharp } from "react-icons/io5";
 export default function Home(this: any) {
 
   const [allergies, setAllergies] = useState<Allergy[]>([]);
-  // const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([]);
+  const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([]);
   
   const [open, setOpen] = useState(false);
 
@@ -20,43 +20,14 @@ export default function Home(this: any) {
   const patientId = parseInt(urlParams.get('patientId') || "1");
     useEffect(() => {
       getAllergies(patientId).then((allergies) => setAllergies(allergies));
-      // getDiagnoses(patientId).then((diagnoses) => setDiagnoses(diagnoses));
+      getDiagnoses(patientId).then((diagnoses) => setDiagnoses(diagnoses));
     }, []);
 
-    // const allergies = [
-    //   new Allergy({
-    //     id: 1,
-    //     patientId: 1,
-    //     allergen: "Gräser Roggen",
-    //     reaction: "Niesen",
-    //     severity: "Mittel",
-    //     dateDiagnosed: new Date(),
-    //     notes: "Allergie gegen Gräser Roggen"
-    //   })
-    // ]
   
     if (allergies.length == 0) {
       return <div>Loading...</div>;
     }
 
-  const diagnoses = [
-      new Diagnosis({
-        id: 1,
-        patientId: 1,
-        issuedBy: {
-          id: 1,
-          name: "Dr. Mustermann",
-          address: "Musterstraße 1",
-          phone: "0123456789",
-          email: " ",
-          speciality: "Allgemeinmedizin"
-        },
-        illness: "Diabetis",
-        description: "Husten seit 3 Wochen",
-        severity: "Mittel",
-        dateDiagnosed: new Date()
-      }),
-  ]
 
   const handleToggleDialog = () => {
     setOpen(true);

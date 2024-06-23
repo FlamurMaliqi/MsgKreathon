@@ -49,7 +49,10 @@ const getDiagnosis = async (patientId: number, vaccinationId: number): Promise<D
 
 const getDiagnoses = async (patientId: number): Promise<Diagnosis[]> => {
     const diagnosesUrl = API_CONFIG.getDiagnosesURL(patientId);
-    const js = await API_CONFIG.sendRequest(diagnosesUrl + "/all", 'GET', "");
+    const js = await API_CONFIG.sendRequest(diagnosesUrl, 'GET', "");
+    if (js=="") {
+        return [];
+    }
     return js.map((item: any) => new Diagnosis(item));
 }
 
