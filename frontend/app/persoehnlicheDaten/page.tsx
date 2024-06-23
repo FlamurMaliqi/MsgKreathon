@@ -5,87 +5,98 @@ import { useState, useEffect } from "react";
 import HeaderNav from "../components/HeaderNav";
 import SideNav from "../components/SideNav";
 import Input from "../components/jsonUtil/jsonConnectedFormField";
+import account from "../api/account";
 
 export default function Home() {
-    // const [d, setD] = useState(null as unknown as Patient);
-    // const [e, setE] = useState(null as unknown as EmergencyContact);
+    const [d, setD] = useState(null as unknown as Patient);
+    const [e, setE] = useState(null as unknown as EmergencyContact);
 
-    // useEffect(() => {
-    //     const urlParams = new URLSearchParams(window.location.search)
-    //     const patientId = parseInt(urlParams.get('patientId') || "1");
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search)
+        const patientId = parseInt(urlParams.get('patientId') || "1");
 
-    //     getPatient(patientId).then((patient) => {
-    //         setD(patient);
-    //     });
-    //     getEmergencyContact(patientId).then((emergencyContact) => {
-    //         setE(emergencyContact);
-    //     });
+        getPatient(patientId).then((patient) => {
+            setD(patient);
+        });
+        getEmergencyContact(patientId).then((emergencyContact) => {
+            setE(emergencyContact);
+        });
 
-    // }, []);
+    }, []);
     
-    // const urlParams = new URLSearchParams(window.location.search)
-    // const patientId = parseInt(urlParams.get('patientId') || "1");
+    const urlParams = new URLSearchParams(window.location.search)
+    const patientId = parseInt(urlParams.get('patientId') || "1");
+
+    if (!d || !e) {
+        return <div>Loading...</div>;
+    }
+
+    if (account.loggedIn && account.isDoctor) {
+        // Disable editing for all inputs except for buttons
+        // wait 0.2 seconds for the page to load
+        setTimeout(() => {
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].setAttribute("disabled", "true");
+            }
+        }, 200);
+    }
 
 
-    // if (!d || !e) {
-    //     return <div>Loading...</div>;
-    // }
-
-
-    var d = new Patient({
-        patientId: 1,
-        name: "TestDoktor",
-        surname: "TestNachname",
-        kvr: "123456789",
-        email: "",
-        phone: "",
-        street: "",
-        houseNumber: "",
-        postalCode: "",
-        city: "",
-        birthday: "",
-        weightKg: 0,
-        heightCm: 0,
-        familyDoctor: {
-            name: "TestDoktor",
-            surname: "TestNachname",
-            email: "",
-            phone: "",
-            street: "",
-            houseNumber: "",
-            postalCode: "",
-            city: "",
-            speciality: ""
-        },
-        emergencyContact: {
-            iceId: 1,
-            name: "",
-            patientId: "",
-            surname: "",
-            relationship: "",
-            email: "",
-            phone: "",
-            street: "",
-            houseNumber: "",
-            postalCode: "",
-            city: ""
-        },
-        healthInsuranceProvider: ""
-    });
+    // var d = new Patient({
+    //     patientId: 1,
+    //     name: "TestDoktor",
+    //     surname: "TestNachname",
+    //     kvr: "123456789",
+    //     email: "",
+    //     phone: "",
+    //     street: "",
+    //     houseNumber: "",
+    //     postalCode: "",
+    //     city: "",
+    //     birthday: "",
+    //     weightKg: 0,
+    //     heightCm: 0,
+    //     familyDoctor: {
+    //         name: "TestDoktor",
+    //         surname: "TestNachname",
+    //         email: "",
+    //         phone: "",
+    //         street: "",
+    //         houseNumber: "",
+    //         postalCode: "",
+    //         city: "",
+    //         speciality: ""
+    //     },
+    //     emergencyContact: {
+    //         iceId: 1,
+    //         name: "",
+    //         patientId: "",
+    //         surname: "",
+    //         relationship: "",
+    //         email: "",
+    //         phone: "",
+    //         street: "",
+    //         houseNumber: "",
+    //         postalCode: "",
+    //         city: ""
+    //     },
+    //     healthInsuranceProvider: ""
+    // });
     
-    var e = new EmergencyContact({
-        iceId: 1,
-        name: "",
-        patientId: "",
-        surname: "",
-        relationship: "",
-        email: "",
-        phone: "",
-        street: "",
-        houseNumber: "",
-        postalCode: "",
-        city: ""
-    });
+    // var e = new EmergencyContact({
+    //     iceId: 1,
+    //     name: "",
+    //     patientId: "",
+    //     surname: "",
+    //     relationship: "",
+    //     email: "",
+    //     phone: "",
+    //     street: "",
+    //     houseNumber: "",
+    //     postalCode: "",
+    //     city: ""
+    // });
 
     return (
         <main className="main-grid grid min-h-screen">
@@ -262,17 +273,20 @@ export default function Home() {
                     </div>
                 </form>
             </div>
-            <button className="absolute bottom-5 right-5 bg-white hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
-                type="button"
-                onClick={async () => {
-                    await updatePatient(d);
-                    await updateEmergencyContact(d.id!, e);
-                    window.location.href = "/";
-                }}
-            >
-                Speichern
-            </button>
 
+            {account.loggedIn && !account.isDoctor && (
+                <button className="absolute bottom-5 right-5 bg-white hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+                    type="button"
+                    onClick={async () => {
+                        await updatePatient(d);
+                        await updateEmergencyContact(d.id!, e);
+                        window.location.href = "/?patientId=" + patientId;
+                    }}
+                >
+                    Speichern
+                </button>
+            )}
+            {account.loggedIn && !account.isDoctor && (
             <button className="absolute bottom-5 left-[12vw] ml-4 hover:bg-[var(--primary)] text-[var(--primary)] bg-white font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
                 type="button"
                 onClick={async () => {
@@ -282,6 +296,7 @@ export default function Home() {
             >
                 Abmelden
             </button>
+            )}
         </main>
     );
 }

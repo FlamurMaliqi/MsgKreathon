@@ -16,12 +16,12 @@ const SideNav = ({activeID}: {activeID: number}) => {
     }
 
     const navItems = [
-        { href: `./?patientId=${patientID}`, icon: <LuLayoutDashboard />, label: "Dashboard" },
-        { href: `./Befunde?patientId=${patientID}`, icon: <FaFileContract />, label: "Befunde" },
-        { href: `./Krankheitsbild?patientId=${patientID}`, icon: <FaStethoscope />, label: "Krankheitsbild" },
-        { href: `./Medikamente?patientId=${patientID}`, icon: <FaPills />, label: "Medikamente" },
-        { href: `./Impfungen?patientId=${patientID}`, icon: <TbVaccine />, label: "Impfungen" },
-        { href: `./Graph?patientId=${patientID}`, icon: <BsGraphUp />, label: "Graph" }
+        { href: `/?patientId=${patientID}`, icon: <LuLayoutDashboard />, label: "Dashboard" },
+        { href: `/Befunde?patientId=${patientID}`, icon: <FaFileContract />, label: "Befunde" },
+        { href: `/Krankheitsbild?patientId=${patientID}`, icon: <FaStethoscope />, label: "Krankheitsbild" },
+        { href: `/Medikamente?patientId=${patientID}`, icon: <FaPills />, label: "Medikamente" },
+        { href: `/Impfungen?patientId=${patientID}`, icon: <TbVaccine />, label: "Impfungen" },
+        { href: `/Graph?patientId=${patientID}`, icon: <BsGraphUp />, label: "Graph" }
     ];
 
     return (

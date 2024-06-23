@@ -4,35 +4,37 @@ import SideNav from "../../components/SideNav";
 import Input from "../../components/jsonUtil/jsonConnectedFormField";
 import { useState, useEffect } from "react";
 import { Doctor, getDoctor, updateDoctor } from "@/app/api/doctor";
+import account from "@/app/api/account";
 
 export default function Home() {
-    // const [d, setD] = useState(null as unknown as Doctor);
 
-    // useEffect(() => {
-    //     const urlParams = new URLSearchParams(window.location.search)
-    //     const patientId = parseInt(urlParams.get('patientId') || "1");
+    const [d, setD] = useState(null as unknown as Doctor);
+    const urlParams = new URLSearchParams(window.location.search)
+    const patientId = parseInt(urlParams.get('patientId') || "-1");
+    useEffect(() => {
+       
 
-    //     getDoctor(patientId).then((doctor) => setD(doctor));
+        getDoctor(account.userId).then((doctor) => setD(doctor));
 
-    // }, []);
+    }, []);
 
-    // if (!d) {
-    //     return <div>Loading...</div>;
-    // }
+    if (!d) {
+        return <div>Loading...</div>;
+    }
 
 
-    var d = new Doctor({
-        doctorId: 1,
-        name: "Max",
-        surname: "Mustermann",
-        email: "max@musterman.org",
-        speciality: "Allgemeinmedizin",
-        phone: "0123456789",
-        street: "Musterstraße",
-        houseNumber: "1",
-        postalCode: "12345",
-        city: "Musterstadt",
-    });
+    // var d = new Doctor({
+    //     doctorId: 1,
+    //     name: "Max",
+    //     surname: "Mustermann",
+    //     email: "max@musterman.org",
+    //     speciality: "Allgemeinmedizin",
+    //     phone: "0123456789",
+    //     street: "Musterstraße",
+    //     houseNumber: "1",
+    //     postalCode: "12345",
+    //     city: "Musterstadt",
+    // });
 
     
 
@@ -164,7 +166,7 @@ export default function Home() {
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
-                                jsonPath="postalcode"
+                                jsonPath="postalCode"
                                 displayName="PLZ"
                                 updateFunction={() => {
                                     console.log(d.name)
@@ -176,16 +178,28 @@ export default function Home() {
 
                 </form>
 
-                <button className="bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
-                    type="button"
-                    onClick={async () => {
-                        await updateDoctor(d);
-                        window.location.href = "/";
-                    }}
-                    >
-                    Speichern
-                </button>
+                
+            <button className="absolute bottom-5 right-5 bg-white hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+                type="button"
+                onClick={async () => {
+                    await updateDoctor(d);
+                    window.location.href = "/?patientId=" + patientId;
+                }}
+            >
+                Speichern
+            </button>
+            
 
+            <button className="absolute bottom-5 left-[12vw] ml-4 hover:bg-[var(--primary)] text-[var(--primary)] bg-white font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+                type="button"
+                onClick={async () => {
+                    localStorage.clear();
+                    window.location.href = "/login";
+                }}
+            >
+                Abmelden
+            </button>
+            
             </div>
          
         </main>
