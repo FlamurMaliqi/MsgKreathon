@@ -5,7 +5,7 @@ import Input from "../../components/jsonUtil/jsonConnectedFormField";
 import { useState, useEffect } from "react";
 import { Doctor } from "@/app/api/doctor";
 import JsonConnectedDatePicker from "@/app/components/jsonUtil/jsonConnectedDate";
-import { Allergy, updateAllergies, getAllergies } from "@/app/api/allergy";
+import { Allergy, createAllergy, getAllergies } from "@/app/api/allergy";
 
 export default function Home() {
 
@@ -13,20 +13,27 @@ export default function Home() {
 
     const urlParams = new URLSearchParams(window.location.search)
     const patientId = parseInt(urlParams.get('patientId') || "-1");
-    const allergyId = parseInt(urlParams.get('allergyId') || "-1");
-
-    if (patientId == -1 || allergyId == -1) {
+    
+    if (patientId == -1) {
         alert("No patientId and/or allergyId provided in URL")
+        return <div></div>
+    }
+
+    if (d == undefined) {
+        // Create sample allergy
+        const k = new Allergy({
+            id: undefined,
+            allergen: "",
+            patientId: patientId,
+            reaction: "",
+            dateDiagnosed: new Date(),
+            severity: "",
+            notes: "",
+        });
+        setD(k);
+
     }
    
-    useEffect(() => {
-        getAllergies(patientId).then((allergies:Allergy[]) => {
-            var allergy:(Allergy|undefined) = allergies.find((allergy) => allergy.id == allergyId);
-            setD(allergy);
-            console.log(allergy);
-        });
-
-    }, []);
 
     if (!d) {
         return <div>Loading...</div>;
@@ -47,7 +54,7 @@ export default function Home() {
 
 
     return (
-        <div className="content h-[92vh] w-[88vw] overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
+        <div className="content overflow-y-scroll py-4 grid grid-cols-1 content-evenly justify-items-center">
             <form className="w-full max-w-lg p-4 bg-[--secondary] rounded">
                 <h3>Impfungsinformationen </h3>
                 
@@ -113,20 +120,12 @@ export default function Home() {
 
             </form>
 
-            <button className="bg-transparent hover:bg-[var(--primary)] text-[var(--primary)] font-semibold hover:text-[var(--onPrimary)] py-2 px-4 border border-[var(--primary)] hover:border-transparent rounded" 
+            <button  className="justify-self-start relative left-0 bottom-[-16px] hover:bg-[var(--primary)] hover:text-[var(--onPrimary)] mt-3 inline-flex w-full justify-center rounded-md bg-white p-1 text-sm font-semibold text-gray-900 shadow-sm border border-[var(--primary)] sm:mt-0 sm:w-auto"
                 type="button"
                 onClick={async () => {
-                    // get all allergies and update the one with the id
-                    const allergies = await getAllergies(patientId);
-                    for (let i = 0; i < allergies.length; i++) {
-                        if (allergies[i].id == allergyId) {
-                            allergies[i] = d;
-                            break;
-                        }
-                    }
-                    await updateAllergies(patientId, allergies);
+                    await createAllergy(patientId, d);
                     alert("Allergie wurde gespeichert")
-                    window.location.href = "/Krankheitsbild?" + "patientId=" + patientId + "&allergyId=" + allergyId;
+                    window.location.href = "/Krankheitsbild?" + "patientId=" + patientId;
                 }}
                 >
                 Speichern

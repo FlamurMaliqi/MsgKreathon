@@ -3,12 +3,13 @@ import HeaderNav from "../../components/HeaderNav";
 import SideNav from "../../components/SideNav";
 import Input from "../../components/jsonUtil/jsonConnectedFormField";
 import { useState, useEffect } from "react";
-import { Vaccination, updateVaccination, getVaccination } from "@/app/api/vaccination";
+import { Vaccination, updateVaccination, getVaccination, createVaccination } from "@/app/api/vaccination";
 import { Doctor } from "@/app/api/doctor";
 import JsonConnectedDatePicker from "@/app/components/jsonUtil/jsonConnectedDate";
+import account from "@/app/api/account";
 
 export default function Home() {
-    // const [d, setD] = useState(null as unknown as Vaccination);
+    const [d, setD] = useState(null as unknown as Vaccination);
 
     // const urlParams = new URLSearchParams(window.location.search)
     // const patientId = parseInt(urlParams.get('patientId') || "1");
@@ -25,29 +26,38 @@ export default function Home() {
     //     return <div>Loading...</div>;
     // }
 
+    if (!account.loggedIn || !account.isDoctor) {
+        return <div> No Permission to create this </div>
+    }
 
-    var d = new Vaccination({
-        id: 1,
-        vaccineName: "Biontech",
-        vaccinationDate: new Date(),
-        administeringDoctor: {
-            id: 1,
-            name: "Max",
-            surname: "Mustermann",
-            email: "",
-            phone: "",
-            speciality: "",
-            street: "",
-            houseNumber: "",
-            city: "",
-            postalcode: ""
-        },
-        patientId: 2,
-        dose: "30 mg",
-        notificationDate: new Date(),
-    });
+    // get patient id from url
+    const urlParams = new URLSearchParams(window.location.search)
+    const patientId = parseInt(urlParams.get('patientId') || "-1");
 
-    const patientId = 1;
+    if (d == null) {
+        const l = new Vaccination({
+            id: undefined,
+            vaccineName: "",
+            vaccinationDate: new Date(),
+            administeringDoctor: {
+                id: account.userId,
+                name: "",
+                surname: "",
+                email: "",
+                phone: "",
+                speciality: "",
+                street: "",
+                houseNumber: "",
+                city: "",
+                postalcode: ""
+            },
+            patientId: patientId,
+            dose: "",
+            notificationDate: new Date(),
+        });
+        setD(l);
+    }
+
 
 
     return (
@@ -121,7 +131,7 @@ export default function Home() {
                     className="justify-self-start relative left-0 bottom-[-16px] hover:bg-[var(--primary)] hover:text-[var(--onPrimary)] mt-3 inline-flex w-full justify-center rounded-md bg-white p-1 text-sm font-semibold text-gray-900 shadow-sm border border-[var(--primary)] sm:mt-0 sm:w-auto"
                     type="button"
                     onClick={async () => {
-                        await updateVaccination(patientId, d);
+                        await createVaccination(patientId, d);
                         window.location.href = "/";
                     }}
                     >
