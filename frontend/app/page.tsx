@@ -22,7 +22,11 @@ export default function Home() {
   const [textAllergie, setTextAllergie] = useState<string>("");
   const [title, setTextTitle] = useState<string>();
   var patientID = Account.userId;
-
+  // get patientId from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (account.isDoctor){
+    patientID = parseInt(urlParams.get('patientId') || "-1");
+  }
   useEffect(() => {
     getPatient(patientID).then((patient) => {
       setPersonalData(
@@ -85,9 +89,7 @@ export default function Home() {
     toggleAllgerieTermine = <Card onClick={() => handleCardClick('/Krankheitsbild')} className="dashboard-area-b" title="Allergie" text={textAllergie} />
 
 
-    // get patientId from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    patientID = parseInt(urlParams.get('patientId') || "-1");
+
     if (patientID == -1) {
       window.location.href = '/choosePatient';
     }
