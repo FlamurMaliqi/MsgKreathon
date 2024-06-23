@@ -34,15 +34,15 @@ export default function Home() {
 
     var d = new Patient({
         patientId: 1,
-        name: "TestDoktor",
-        surname: "TestNachname",
+        name: "Lebron",
+        surname: "James",
         kvr: "123456789",
-        email: "",
-        phone: "",
-        street: "",
-        houseNumber: "",
-        postalCode: "",
-        city: "",
+        email: "kontakt@jobbot.de",
+        phone: "016092344225",
+        street: "Ostendstraße",
+        houseNumber: "21",
+        postalCode: "86633",
+        city: "Neuburg an der Donau(schönste Stadt der Welt)",
         birthday: "",
         weightKg: 0,
         heightCm: 0,
@@ -59,12 +59,12 @@ export default function Home() {
         },
         emergencyContact: {
             iceId: 1,
-            name: "",
+            name: "Lightning",
             patientId: "",
-            surname: "",
-            relationship: "",
+            surname: "McQueen",
+            relationship: "Mein Bre",
             email: "",
-            phone: "",
+            phone: "0162 377 8907",
             street: "",
             houseNumber: "",
             postalCode: "",
@@ -195,7 +195,7 @@ export default function Home() {
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
                                 json={d}
-                                jsonPath="postalcode"
+                                jsonPath="postalCode"
                                 displayName="PLZ"
                                 updateFunction={() => {
                                     console.log(d.name)
@@ -212,7 +212,7 @@ export default function Home() {
                                 Vorname
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="name"
                                 displayName="Vorname"
                                 updateFunction={() => {
@@ -224,7 +224,7 @@ export default function Home() {
                                 Nachname
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="surname"
                                 displayName="Nachname"
                                 updateFunction={() => {
@@ -238,7 +238,7 @@ export default function Home() {
                                 Telefonnummer
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="phone"
                                 displayName="telefonnummer"
                                 updateFunction={() => {
@@ -252,7 +252,7 @@ export default function Home() {
                                 Beziehung
                             </label>
                             <Input className="appearance-none block w-full bg-gray-100 text-[var(--onTritary)] border border-[var(--onTritary)] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-[var(--onTritary)]-500"
-                                json={d}
+                                json={d.emergencyContact}
                                 jsonPath="relationship"
                                 displayName="Beziehung"
                                 updateFunction={() => {
