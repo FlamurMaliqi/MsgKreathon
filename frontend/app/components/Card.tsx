@@ -3,14 +3,16 @@ import React from 'react';
 import { Card } from 'primereact/card';
 import {motion} from 'framer-motion';
 
-
 export default function CardElement({
     title = "Title", 
     text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!", 
-    className = ""} : {
+    className = "",
+    onClick = () => {}
+    } : {
     title?: string,
     text?: any,
-    className?: string
+    className?: string,
+    onClick?: () => void
     }
 ) {
     return (
@@ -21,9 +23,11 @@ export default function CardElement({
             whileTap={{ scale: 0.975 }}
             whileHover={{ scale: 1.005, backgroundColor: "var(--primary)", color: "var(--onPrimary)", boxShadow: "0 0 10px rgba(0,0,0,0.1)" }}
         
-            className={className + " card"}>
+            className={className + " card"}
+            onClick={onClick}
+        >
             <Card className="headline" title={title}>
-                <p className="text m-0 opacity-90">
+                <p className="text m-0 opacity-90" >
                     {text.split("\n").map((item: any, key: any) => {
                         return <span key={key}>{item}<br/></span>
                     })}
@@ -32,4 +36,3 @@ export default function CardElement({
         </motion.div>
     )
 }
-        
