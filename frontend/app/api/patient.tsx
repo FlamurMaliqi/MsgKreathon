@@ -39,7 +39,7 @@ class Patient {
         houseNumber: string;
         postalCode: string;
         city: string;
-        emergencyContact?: Object;
+        ice?: any;
     }) {
         this.id = json.patientId;
         this.name = json.name;
@@ -56,8 +56,9 @@ class Patient {
         this.houseNumber = json.houseNumber;
         this.postalCode = json.postalCode;
         this.city = json.city;
-        if (json.emergencyContact)
-            this.emergencyContact = new EmergencyContact(json.emergencyContact as any);
+        console.log(json);
+        if (json.ice)
+            this.emergencyContact = new EmergencyContact(json.ice as any);
     }
 
     toJson(): Object {
