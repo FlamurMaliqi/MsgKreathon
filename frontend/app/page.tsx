@@ -23,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     getPatient(patientID).then((patient) => {
       setPersonalData(
-        patient.name + patient.surname + "\n" +
+        patient.name + " " + patient.surname + "\n" +
         patient.kvr + "\n" +
         patient.street + " " + patient.houseNumber + " " + patient.postalCode + " " + patient.city + "\n" +
         patient.phone + "\n" + patient.email + "\n" + (new Date(patient.birthday)).toLocaleDateString("de-DE") + "\n" +
